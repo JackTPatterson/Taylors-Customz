@@ -1,0 +1,240 @@
+.req-form {
+    width: 40%;
+    margin-top: 20px;
+    position: absolute;
+    padding-right: 50px;
+    margin-top: 100px;
+}
+
+@media (min-height: 700px) {
+    .req-form {
+        left: 40px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .req-form {
+        width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-height: 700px) {
+    .req-form {
+        top: 310px;
+    }
+}
+
+.form-control {
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid #CCCCCC;
+    height: 50px;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    border: 2px solid black;
+
+
+}
+
+.custom-select {
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid #CCCCCC;
+    height: 50px;
+}
+
+#shoe-select {
+    width: 49%;
+    float: right;
+}
+
+#gender-select {
+    width: 49%;
+}
+
+#img-btn {
+    margin-top: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.sect-blk {
+    width: 100%;
+    background-color: #2b2c3e;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.sect-blk-bool {
+    width: 100%;
+    background-color: #2b2c3e;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+    border-radius: 10px;
+    float: left;
+}
+
+.bool-desc {
+    padding-top: 5px;
+    color: black;
+    padding-left: 10px;
+    padding-top: 1px;
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cbx {
+    padding-top: 10px;
+    margin: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+}
+
+.cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid grey;
+    transition: all 0.2s ease;
+}
+
+.cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+}
+
+.cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #506eec;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+}
+
+.cbx span:last-child {
+    padding-left: 8px;
+}
+
+.cbx:hover span:first-child {
+    border-color: #506eec;
+}
+
+.inp-cbx:checked+.cbx span:first-child {
+    background: #506eec;
+    border-color: #506eec;
+    animation: wave 0.4s ease;
+}
+
+.inp-cbx:checked+.cbx span:first-child svg {
+    stroke-dashoffset: 0;
+}
+
+.inp-cbx:checked+.cbx span:first-child:before {
+    transform: scale(3.5);
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+@keyframes wave {
+    50% {
+        transform: scale(0.9);
+    }
+}
+
+#req-form-fName {
+    width: 49%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+#req-form-lName {
+    width: 49%;
+    float: right;
+    margin-bottom: 10px;
+}
+
+#req-form-desc {
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+
+
+#form-sbmt-btn {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.info-btn {
+    font-weight: bold;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+#req-form-shoe-name {
+    margin-top: 0px !important;
+}
+
+.custom-file-input{
+    opacity: 1 !important;
+}

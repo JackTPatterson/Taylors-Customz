@@ -1,0 +1,60 @@
+{% extends 'users/base.html' %}
+{% load widget_tweaks %}
+
+{% block styles %}
+<link href="../static/users/assets/css/request.css" rel='stylesheet'>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+{% endblock styles %}
+
+{% block content %}
+<div class='req-form'>
+    <form id='demo-form' method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class='page-header'>Request Design</h1>
+        {{form.first_name}}
+        {{form.last_name}}
+        {{form.email}}
+        {{form.description}}
+
+
+
+        {{form.photo}}
+
+        {{form.hasShoe}}
+        <label class="cbx" for="cbx"><span>
+                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </svg></span>
+            <p class="bool-desc">I own these shoes</p>
+        </label>
+        <div class='shoe-option'>
+            {{form.shoe_name}}
+            {{form.shoe_size |attr:"class:custom-select" |attr:"id:shoe-select"}}
+            {{form.gender |attr:"class:custom-select" |attr:"id:gender-select"}}
+        </div>
+            <button data-sitekey="6LeUZA0aAAAAALGcXDiCGdOrCnURy1xp_dDrTYds"
+        data-callback='onSubmit' 
+        data-action='submit' type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+    setInterval(function () {
+        if ($('#cbx').prop("checked") == true) {
+            $('.shoe-option').hide()
+        }
+        else{
+            $('.shoe-option').show()
+        }
+    }, 100);
+
+    function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+</script>
+
+
+
+
+{% endblock content%}

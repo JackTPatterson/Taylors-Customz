@@ -1,0 +1,230 @@
+.request-list {
+    width: 90%;
+    background-color: #f1f3f6;
+    height: 60px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+    margin-top: 20px;
+}
+
+.req-name {
+    font-weight: 600;
+    font-size: 30px;
+    text-align: left;
+}
+
+
+
+.info-blk {
+    margin-left: 20px;
+    width: 33%;
+    float: left;
+}
+
+.shoe-name-info {
+    margin-left: 38px;
+    font-weight: 500;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.email {
+    margin-left: 38px;
+}
+
+.shoe-p {
+    margin-left: 38px;
+}
+
+#size {
+    margin-top: -10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#gender {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.size-num {
+    font-weight: 500;
+    color: grey;
+}
+
+.gender-num {
+    font-weight: 500;
+    color: grey;
+}
+
+.ref-h1 {
+    font-size: 30px;
+    padding-left: 37px;
+    padding-top: 20px;
+}
+
+.ref-img {
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    margin-left: 35px;
+}
+
+.desc-blk {
+    margin-top: 100px;
+    position: absolute;
+    left: 33%;
+    width: 33%;
+    float: left;
+}
+
+.upload-blk {
+    margin-top: 100px;
+    right: 0px;
+    width: 23%;
+    position: absolute;
+}
+
+.upload-date {
+    font-size: 25px;
+}
+
+.leftpane {
+    float: left;
+    width: 30%;
+    margin-top: 100px;
+}
+
+.middlepane {
+    float: left;
+    width: 33%;
+    height: 400px;
+    margin-left: 0.25%;
+    margin-top: 100px;
+}
+
+.rightpane {
+    float: right;
+    margin-top: 100px;
+    height: 400px;
+    width: 31%;
+}
+
+@media (max-width: 1335px) {
+    .leftpane {
+        width: 90%;
+    }
+
+    .middlepane {
+        float: left;
+        width: 90%;
+    }
+
+    .rightpane {
+        float: right;
+        width: 100%;
+        margin-left: 50px;
+    }
+}
+
+#acc-sbmt {
+    background-color: transparent;
+    color: black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px #00f269;
+    width: 100px;
+    margin: 5px;
+    float: left;
+}
+
+#acc-sbmt:hover {
+    background-color: #00f269;
+    color: white;
+    transition: 0.3s;
+}
+
+#deny-sbmt {
+    background-color: transparent;
+    color: black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px #f20038;
+    margin: 5px;
+    float: left;
+    width: 100px;
+}
+
+#deny-sbmt:hover {
+    background-color: #f20038;
+    color: white;
+    transition: 0.3s;
+}
+
+#comp-sbmt {
+    background-color: transparent;
+    color: black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px rgb(0 242 105);
+    margin: 5px;
+    float: left;
+    width: 121px;
+    
+}
+
+#comp-sbmt:hover {
+    background-color: rgb(0 242 105);
+    color: white;
+    transition: 0.3s;
+
+}
+
+
+
+
+#email-sbmt {
+    background-color: transparent;
+    color: black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px black;
+    margin: 5px;
+    float: left;
+    width: 100px;
+}
+
+#email-sbmt:hover {
+    background-color: #000;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-group-admin {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 15px !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 5px;
+}

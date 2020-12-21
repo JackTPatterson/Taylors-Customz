@@ -1,0 +1,95 @@
+{% extends 'users/base.html' %}
+
+{% block styles %}
+
+{% endblock styles %}
+
+{% block content %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src="../../static/users/assets/js/transition.min.js"></script>
+<script src="../../static/users/assets/js/zoom.min.js"></script>
+
+<link href="../../static/users/assets/css/zoom.css" rel="stylesheet">
+<link href="../../static/users/assets/css/admin.css" rel="stylesheet">
+
+<script>
+
+
+
+</script>
+
+<div class='leftpane'>
+    <h1 class='page-header' id='req-title' style='margin-left: 38px;'>{{ instance.first_name.capitalize }} {{ instance.last_name.capitalize }}</h1>
+
+    <p class='shoe-name-info'>{{ instance.shoe_name }}</p>
+
+
+    <p class='shoe-p' id='gender'>Gender: <span class='gender-num'>{{instance.gender}}</span></p>
+    <p class='shoe-p' id='size'>Size: <span class='size-num'>{{instance.shoe_size}}</span></p>
+
+    {% if instance.hasShoe%}
+    <p class='shoe-p'>This client owns these shoes</p>
+    {% else %}
+    <p class='shoe-p'>This client does not own these shoes</p>
+    {% endif %}
+    <h1 class='ref-h1'>Reference Image</h1>
+    <img class='ref-img' src="../../../media/{{instance.photo}}"
+        data-action="zoom">
+</div>
+<div class='middlepane'>
+    <h1 class='page-header'>Description</h1>
+    <p>{{instance.description}}</p>
+</div>
+<div class='rightpane'>
+    <h1 class='page-header'>Date Requested</h1>
+    <p class='upload-date'>{{instance.date_submitted}}</p>
+    <br>
+    <h1 class='page-header'>Order #</h1>
+    <p class='upload-date'>{{instance.orderNumber}}</p>
+    <br>
+    {% if instance.price and '$' in instance.price %}
+    <h1 class='page-header'>Price</h1>
+    <p class='upload-date'>{{instance.price}}</p>
+    {% elif instance.price %}
+    {% endif %}
+</div>
+{% if user.is_authenticated %}
+<div class='btn-group-admin'>
+    {% if not instance.accepted %}
+    <button onclick='window.location.href="{% url 'detail-accept' instance.orderId %}"' type="submit" id='acc-sbmt'
+        class="btn btn-primary">Accept</button>
+    {% endif %}
+    {% if not instance.denied %}
+    <button onclick='window.location.href="{% url 'detail-deny' instance.orderId %}"' type="submit" id='deny-sbmt'
+        class="btn btn-primary">Deny</button>
+    {% endif %}
+    <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='email-sbmt'
+        class="btn btn-primary">Email</button>
+    {% if instance.denied or instance.completed %}
+    <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='deny-sbmt'
+        class="btn btn-primary" style='font-weight: bold; color: red'>DELETE</button>
+    {% endif %}
+    {% if instance.accepted %}
+    <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='comp-sbmt'
+        class="btn btn-primary">COMPLETE</button>
+    {% endif %}
+</div>
+<style>
+.btn-group-admin{
+    background-color: white;
+    border-radius: 15px !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+    0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 5px;
+}
+</style>
+{% endif %}
+
+
+
+
+{% endblock content %}

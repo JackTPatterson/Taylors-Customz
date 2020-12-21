@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+
+{% block styles %}
+<link rel='stylesheet' href='../../static/users/assets/css/emails.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+{% endblock styles %}
+
+{% block content %}
+
+<center>
+    <h1 class='main-head'>Specify a reason for the denial</h1>
+</center>
+<div class='form-blk'>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{form.price}}
+        {{form.message}}
+        <button type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+    setInterval(function () {
+        if ($("#prc-form").is(':focus') && !$("#prc-form").val().includes("$")) {
+            $("#prc-form").val("$").before()
+        }
+        if (!$("#prc-form").is(':focus') && $("#prc-form").val().includes("$")) {
+            if ($("#prc-form").val().length < 2) {
+                $("#prc-form").val("")
+            }
+        }
+    }, 100)
+</script>
+
+{% endblock content %}
