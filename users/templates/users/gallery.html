@@ -1,0 +1,53 @@
+{% extends "users/base.html" %}
+
+{% block styles %}
+  <link rel="stylesheet" href='../../static/users/assets/css/gallery.css'>
+{% endblock styles %}
+
+{% block content %}
+        <h1 class='page-header'>Gallery</h1>
+
+<div class="responsive">
+<div class="grid" style='margin-top: 10px;'>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe1.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe2.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe3.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe4.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe5.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe6.jpg"/>
+    </div>
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe7.jpg"/>
+    </div>
+
+    
+  </div>
+
+  <script src="../../static/users/assets/js/gridify.min.js"></script>
+<script>
+
+    const gridify = new Gridify();
+
+const container = document.querySelector('.grid');
+
+container.addEventListener('gridify:init', (ev) => {
+  console.log('Init handler');
+}, false);
+
+container.addEventListener('gridify:resized', (ev) => {
+  console.log('Resized handler');
+}, false);
+
+</script>
+{% endblock content %}

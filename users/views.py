@@ -196,3 +196,9 @@ def email(request, orderId):
 
 def admin(request):
     return render(request, 'users/admin.html')
+
+def displayDetail(request):
+    return render(request, 'users/display.html')
+
+def gallery(request):
+    return render(request, 'users/gallery.html')

@@ -7,10 +7,10 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+  
 {% endblock styles %}
 {% block content %}
 <section id='home'>
-
   <div class='title-box'>
     <div class='center-content'>
       <h1 class='center-txt-title'>
@@ -30,60 +30,15 @@
 
   </div>
 </section>
-<section id='gallery' style='margin-top: 800px;'>
-  <center>
-    <h1 class='sect-title' id='gallery-title'>Gallery</h1>
-  </center>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</section>
 
-{% comment %} Why is this Not centering {% endcomment %}
 
-{% comment %} <section>
-  <center>
-    <div>
-      <h1 class='sect-title'>Social</h1>
-      <br>
-      <img src='https://i.pinimg.com/originals/c2/81/8c/c2818c6d5d111f61846fbc878bc51b5e.png' height=50
-        style='margin-right: 20px;'>
-      <img src='https://pbs.twimg.com/profile_images/583391646567411712/g9MI0LQS.png' height=50
-        style='margin-left: 20px;'>
-      <div style='width: 160px;'>
-        <p style='float: left;'>Instagram</p>
-        <p style='float: right;'>Venmo</p>
-      </div>
-    </div>
-  </center>
-</section> {% endcomment %}
+
 <script>
   $(document).ready(function () {
     $('.center-txt-title').animate({
       opacity: 1
     });
   });
-
-  $('document').ready(function () {
-    setInterval(function () {
-      var scrollPos = $(document).scrollTop();
-      if (scrollPos > 30) {
-        $('.arrow-2').animate({
-          opacity: 0
-        }, 200, 'swing');
-      } else {
-        $('.arrow-2').animate({
-          opacity: 1
-        }, 200, 'swing');
-
-      }
-    }, 500);
-  })
 </script>
 <style>
   #gallery-title {

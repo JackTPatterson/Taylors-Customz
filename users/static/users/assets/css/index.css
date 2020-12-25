@@ -433,13 +433,15 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 body {
-    font-family: 'Poppins';
-}
+    font-family: 'Poppins',
+    sans-serif;
+    }
 
 .center-txt-title {
     font-size: calc(6vw + 1pc);
     color: lightgrey;
-    font-weight: bolder;
+    font-weight: bold;
+    
     opacity: 0;
     color: #303030;
 }
@@ -527,3 +529,16 @@ body {
     font-size: calc(1vh + 1pc);
 }
 
+.bg-img {
+
+    
+    position: absolute;
+
+    -ms-transform: translate(50%, 50%);
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    left: 50%;
+    width: 100%;
+}
