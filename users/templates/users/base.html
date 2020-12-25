@@ -12,15 +12,34 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
 	<link rel="text/html" href="../static/users/assets/css/index.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	{% block styles %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+	
+{% block styles %}
 	<title>Taylors Customz</title>
 	{% endblock styles %}
 </head>
 
 <body>
+<script>
+ const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+</script>
 	<body class="hero-anime">
-		<div class="navigation-wrap  start-header start-style bg-light" style='background-color: white'>
+		<div class="navigation-wrap start-header start-style" >
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
@@ -42,7 +61,7 @@
 									</li>
 
 									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-										<a class="nav-link" href="{% url 'index' %}#gallery">Gallery</a>
+										<a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
 									</li>
 									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 										<a class="nav-link" href="{% url 'display-detail' %}">Display</a>

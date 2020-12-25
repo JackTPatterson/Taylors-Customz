@@ -542,3 +542,23 @@ body {
     left: 50%;
     width: 100%;
 }
+
+.darkmode--activated p,
+.darkmode--activated .center-txt-title {
+    color: #fff;
+}
+
+.darkmode--activated #req-btn{
+    color: white;
+}
+
+.darkmode--activated #req-btn {
+  border: solid 2px white;
+}
+
+.darkmode--activated #req-btn:hover {
+    background-color: #fff;
+    color: black;
+    transition: 0.3s;
+    font-size: calc(1vh + 1pc + 2px);
+}
