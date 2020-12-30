@@ -1,4 +1,5 @@
 {% extends 'users/base.html'%}
+
 {% block styles %}
 <link href="../../static/css/index.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -7,7 +8,6 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
-  
 {% endblock styles %}
 {% block content %}
 <section id='home'>
@@ -36,8 +36,9 @@
 <script>
   $(document).ready(function () {
     $('.center-txt-title').animate({
-      opacity: 1
-    });
+      opacity: 1,
+       'padding-bottom' : 20
+    }, "slow");
   });
 </script>
 <style>

@@ -6,37 +6,39 @@
 {% endblock styles %}
 
 {% block content %}
+  <h1 class='page-header' id='req-title'>Orders</h1>
+
 <div class='cbx-blk'>
   <center>
-  <div class='inner-blk'>
-    <input class="inp-cbx" id="morning" type="checkbox" />
-    <label class="cbx" for="morning" style='padding-top: 5px;'><span>
-        <svg width="12px" height="10px">
-          <use xlink:href="#check"></use>
-        </svg></span><span>Requested</span></label>
-    <input class="inp-cbx" id="noon" type="checkbox" />
-    <label class="cbx" for="noon"><span>
-        <svg width="12px" height="10px">
-          <use xlink:href="#check"></use>
-        </svg></span><span>Accpeted</span></label>
-    <input class="inp-cbx" id="afternoon" type="checkbox" />
-    <label class="cbx" for="afternoon"><span>
-        <svg width="12px" height="10px">
-          <use xlink:href="#check"></use>
-        </svg></span><span>Denied</span></label>
-    <input class="inp-cbx" id="evening" type="checkbox" style="display: none" />
-    <label class="cbx" for="evening"><span>
-        <svg width="12px" height="10px">
-          <use xlink:href="#check"></use>
-        </svg></span><span>Completed</span></label>
-    <!--SVG Sprites-->
-    <svg class="inline-svg">
-      <symbol id="check" viewbox="0 0 12 10">
-        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-      </symbol>
-    </svg>
+    <div class='inner-blk'>
+      <input class="inp-cbx" id="morning" type="checkbox" />
+      <label class="cbx" for="morning" style='padding-top: 5px;'><span>
+          <svg width="12px" height="10px">
+            <use xlink:href="#check"></use>
+          </svg></span><span>Requested</span></label>
+      <input class="inp-cbx" id="noon" type="checkbox" />
+      <label class="cbx" for="noon"><span>
+          <svg width="12px" height="10px">
+            <use xlink:href="#check"></use>
+          </svg></span><span>Accpeted</span></label>
+      <input class="inp-cbx" id="afternoon" type="checkbox" />
+      <label class="cbx" for="afternoon"><span>
+          <svg width="12px" height="10px">
+            <use xlink:href="#check"></use>
+          </svg></span><span>Denied</span></label>
+      <input class="inp-cbx" id="evening" type="checkbox" style="display: none" />
+      <label class="cbx" for="evening"><span>
+          <svg width="12px" height="10px">
+            <use xlink:href="#check"></use>
+          </svg></span><span>Completed</span></label>
+      <!--SVG Sprites-->
+      <svg class="inline-svg">
+        <symbol id="check" viewbox="0 0 12 10">
+          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+        </symbol>
+      </svg>
 
-  </div>
+    </div>
   </center>
 </div>
 <div class='requested-blk'>
@@ -192,24 +194,25 @@
 
   @media (max-width: 840px) {
 
-    #req-title{
+    #req-title {
       text-align: center;
       margin-left: 0;
     }
 
-    .requested-blk{
+    .requested-blk {
       margin-top: 170px;
     }
 
-    .cbx-blk{
+    .cbx-blk {
+      top: 200px;
       left: 50%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-          margin-bottom: 5px !important;
+      transform: translate(-50%, -50%);
+      width: fit-content;
+      margin-bottom: 5px !important;
 
     }
 
-    .inner-blk{
+    .inner-blk {
       display: inline-block;
     }
 

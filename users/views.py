@@ -5,8 +5,9 @@ from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.http import request
-from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm
+from django.http import request, HttpResponse
+
+from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm, GalleryForm
 from .models import Product
 from django.views.generic import ListView
 from django.contrib import messages
@@ -32,8 +33,8 @@ def request(request):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.orderId = random_with_N_digits(8)
-            obj.orderNumber = random_with_N_digits(8)
+            obj.orderId = random_with_N_digits(10)
+            obj.orderNumber = random_with_N_digits(10)
             form.save()
             
             return redirect("index")
@@ -118,6 +119,7 @@ def accept(request, orderId):
             )
             msg.content_subtype = "html" 
             msg.send()
+            redirect('list')
 
     context = {
         'instance': instance,
@@ -152,6 +154,7 @@ def deny(request, orderId):
             )
             msg.content_subtype = "html"
             msg.send()
+            redirect('list')
 
     context = {
         'instance': instance,
@@ -185,6 +188,7 @@ def email(request, orderId):
             )
             msg.content_subtype = "html"
             msg.send()
+            redirect('list')
 
     context = {
         'instance': instance,
@@ -202,3 +206,13 @@ def displayDetail(request):
 
 def gallery(request):
     return render(request, 'users/gallery.html')
+
+def delete(request, orderId):
+    instance = Product.objects.get(orderId=orderId)
+    instance.delete()
+    redirect('list')
+    return HttpResponse("Data has been deleted")
+
+def dashboard(request):
+    form = GalleryForm(request.POST)
+    return render(request, 'users/admin.html')

@@ -1,4 +1,4 @@
-from .models import Product
+from .models import Product, Gallery
 from django import forms
 
 SHOE_SIZE = [
@@ -136,3 +136,7 @@ class EmailForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('message',)
+
+class GalleryForm(forms.ModelForm):
+    model = Gallery
+    fields = '__all__'

@@ -66,7 +66,7 @@
     <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='email-sbmt'
         class="btn btn-primary">Email</button>
     {% if instance.denied or instance.completed %}
-    <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='deny-sbmt'
+    <button onclick=deleteData() type="submit" id='deny-sbmt'
         class="btn btn-primary" style='font-weight: bold; color: red'>DELETE</button>
     {% endif %}
     {% if instance.accepted %}
@@ -87,6 +87,16 @@
     padding: 5px;
 }
 </style>
+
+<script>
+    function deleteData(){
+        var r = confirm("Are you sure you want to delete this order. You will never be able to get it back");
+        if(r == true){
+            window.location.href="{% url 'delete' instance.orderId %}"
+        }
+    }
+
+</script>
 {% endif %}
 
 
