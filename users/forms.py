@@ -1,10 +1,26 @@
-from .models import Product, Gallery
+from .models import Product
 from django import forms
 
 SHOE_SIZE = [
     ('Select Size', 'Select Size'),
+    ('5', '5'),
+    ('5.5', '5.5'),
+    ('6', '6'),
+    ('6.5', '6.5'),
     ('7', '7'),
+    ('7.5', '7.5'),
     ('8', '8'),
+    ('8.5', '8.5'),
+    ('9', '9'),
+    ('10', '10'),
+    ('10.5', '10.5'),
+    ('11', '11'),
+    ('11.5', '11.5'),
+    ('12', '12'),
+    ('12.5', '12.5'),
+    ('13', '13'),
+    ('13.5', '13.5'),
+    ('14', '14'),
 ]
 
 GENDER = [
@@ -57,7 +73,7 @@ class ProductCreationForm(forms.ModelForm):
          attrs={
              'class': 'inp-cbx',
              'style': 'display: none;',
-             'id': 'cbx'
+             'id': 'cbx',
          }
      ))
 
@@ -78,7 +94,7 @@ class ProductCreationForm(forms.ModelForm):
 
             'class': 'form-control',
             'placeholder': 'Shoe Name',
-            'id': 'req-form-shoe-name'
+            'id': 'req-form-shoe-name',
         }
     ))
 
@@ -137,6 +153,3 @@ class EmailForm(forms.ModelForm):
         model = Product
         fields = ('message',)
 
-class GalleryForm(forms.ModelForm):
-    model = Gallery
-    fields = '__all__'

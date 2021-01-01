@@ -1,26 +1,74 @@
 {% extends "users/base.html" %}
 
 {% block styles %}
-<link rel='stylesheet' href='../../static/users/assets/css/display.css'>
+  <link rel="stylesheet" href='../../static/users/assets/css/display.css'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+    <script src='../../static/users/assets/js/displayAnimation.js'></script>
 {% endblock styles %}
 
 {% block content %}
-<div class='left-sect'>
-    <div class='title-content'>
-        <h1 class='shoe-title'>Nike <br> Air Force Ones</h1>
+        <h1 class='page-header'>Shoe Options</h1>
+
+<div class="responsive">
+<div class="grid" style='margin-top: 10px;' id='img1'>
+    <div class="grid--item">
+      <div class='grid-blk'>
+        <h1 class='blk-title'>Nike</h1>
+        <h1 class='blk-sub'>Air Force 1 '07s</h1>
+      </div>
+      <img src='../../../media/media/display/shoe1.png' style='height: 60%; '>
     </div>
-</div>
-
-<div class='info-blk'>
-    <div class='price-blk'>
-        <p class='prc-txt'>$40</p>
+    <div class="grid--item">
+       <div class='grid-blk'>
+      <h1 class='blk-title'>Nike</h1>
+        <h1 class='blk-sub'>Air Force 1 High</h1>
+        </div>
+         <img src='../../../media/media/display/shoe2.png' style='height: 60%; margin-left: 20px;'>
     </div>
-    <div class='sizes-blk'>
-        <p class='prc-txt'>Available Sizes</p>
-
+    <div class="grid--item">
+       <div class='grid-blk'>
+      <h1 class='blk-title'>Converse</h1>
+        <h1 class='blk-sub'>All Star High Top</h1>
+        </div>
+        <img src='../../../media/media/display/shoe4.png' style='height: 57%; margin-left: 20px;'>
     </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <div class="grid--item">
+       <div class='grid-blk'>
+      <h1 class='blk-title'>Timberland</h1>
+        <h1 class='blk-sub'>6 Inch Premium</h1>
+        </div>
+        <img src='../../../media/media/display/shoe5.png' style='height: 57%; margin-left: 20px;'>
+    </div>
+     <div class="grid--item">
+       <div class='grid-blk'>
+      <h1 class='blk-title'>Vans</h1>
+        <h1 class='blk-sub'>Slip On</h1>
+        </div>
+         <img src='../../../media/media/display/shoe3.png' style='height: 57%; margin-left: 20px;'>
+    </div>
+    <div class="grid--item">
+       <div class='grid-blk'>
+      <h1 class='blk-title'>More</h1>
+        <p class='blk-sub-p'>These arent the only shoes that are possible to customize</p>
+        <p class='blk-sub-p'>Request any pair and you will be notified if it was accepted for production</p>
+                <button onclick='window.location.href="{% url 'request' %}"' id='req-btn-disp' class='btn'>Request</button>
+         <div>
+      </div>
+        </div>
+    </div>
+    
 
 
 
-    {% endblock content %}
+    
+  </div>
+
+  <script src="../../static/users/assets/js/gridify.min.js"></script>
+
+<script>
+
+
+
+</script>
+{% endblock content %}

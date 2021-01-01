@@ -57,10 +57,9 @@ label:focus,
     box-shadow: none !important;
 }
 
-.form-control:focus {
+.custom-select:focus {
     border: 2px solid black;
-
-
+    outline: none !important;
 }
 
 .custom-select {
@@ -69,6 +68,11 @@ label:focus,
     background-color: transparent;
     border: 2px solid #CCCCCC;
     height: 50px;
+    outline: none !important;
+}
+
+.custom-select{
+    border: 2px solid black;
 }
 
 #shoe-select {

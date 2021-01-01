@@ -27,7 +27,7 @@
 }
 
 .start-header.scroll-on .navbar-brand img {
-    height: 28px;
+    
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
@@ -417,8 +417,9 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .center-content {
     position: absolute;
-    top: 42%;
+    top: 50%;
     left: 50%;
+    margin-right: 10px;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -426,15 +427,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     -o-transform: translate(-50%, -50%);
 }
 
-.img-center {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    height: 60vw;
-    backdrop-filter: blur(1px);
-}
+
 
 body {
     font-family: 'Poppins',
@@ -453,13 +446,16 @@ body {
 
 .img-center {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: -1;
     height: 60vw;
     backdrop-filter: blur(1px);
+    height: 70%;
     opacity: 0;
+
+
 }
 
 .sect-title {
@@ -482,6 +478,7 @@ body {
 }
 
 #req-btn {
+    opacity: 0;
     position: absolute;
     top: 80%;
     -ms-transform: translate(50%, 50%);
@@ -547,3 +544,8 @@ body {
     left: 50%;
     width: 100%;
 }
+
+  #gallery-title {
+      height: 100%;
+      margin-top: 75%;
+  }

@@ -8,9 +8,11 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+<script src='../../static/users/assets/js/indexAnimation.js'></script>
 {% endblock styles %}
 {% block content %}
 <section id='home'>
+
   <div class='title-box'>
     <div class='center-content'>
       <h1 class='center-txt-title'>
@@ -20,32 +22,118 @@
     <center>
       <div class='req-btn-outer'>
         <button onclick='window.location.href="{% url 'request' %}"' id='req-btn' class='btn'>Request</button>
-
       </div>
     </center>
-    {% comment %} <img class='img-center' src='https://i.ibb.co/gdS3sQR/nike-air-force-1-removebg-preview.png'>
-    {% endcomment %}
-
-
-
+    <img class='img-center' src='../../../media/media/display/shoe2.png'>
   </div>
 </section>
+<style>
+  .logo-cntr {
 
-
-
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    z-index: -1;
+    opacity: 0;
+  }
+</style>
 <script>
   $(document).ready(function () {
     $('.center-txt-title').animate({
       opacity: 1,
-       'padding-bottom' : 20
+      'padding-bottom': 20
     }, "slow");
   });
+  $('document').ready(function () {
+    setTimeout(function () {
+      $('.img-center').animate({
+        opacity: 1,
+      }, "slow")
+    }, 500)
+    setTimeout(function () {
+
+      $('.lines-cntr').animate({
+        opacity: 1,
+      }, "slow");
+    }, 300)
+  });
+</script>
+<div class='lines-cntr'>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1047.808" height="1308.165" viewBox="0 0 1047.808 1308.165">
+    <rect id="Rectangle_425" data-name="Rectangle 425" width="91" height="1458" transform="translate(729) rotate(30)"
+      fill="#00bddd" />
+    <rect id="Rectangle_426" data-name="Rectangle 426" width="91" height="1421"
+      transform="translate(258.5 57.644) rotate(-30)" fill="#00bddd" />
+  </svg>
+</div>
+<div class='social-blk'>
+  <a href='https://www.instagram.com/taylorscustomz22/'><img class='social-insta' style='height: 50px;' src='../../static/users/assets/images/instagram.png'></a>
+  <a href='https://account.venmo.com/u/TaylorEggert22'><img class='social-venmo' style='height: 60px; margin-left: 20px;' src='../../static/users/assets/images/venmo.png'></a>
+</div>
+<script>
+  $('document').ready(function () {
+    setTimeout(function () {
+      $('.social-blk').animate({
+        opacity: 1,
+      }, "slow");
+    }, 300)
+
+    $('.lines-cntr').css("position", "fixed");
+    $('.lines-cntr').css("top", Math.max(0, (($(window).height() - $('.lines-cntr').outerHeight()) / 2) +
+      $(window).scrollTop()) + "px");
+    $('.lines-cntr').css("left", Math.max(0, (($(window).width() - $('.lines-cntr').outerWidth()) / 2) +
+      $(window).scrollLeft()) + "px");
+    return $('.lines-cntr')
+
+    $('.lines-cntr').resizable({
+      ghost: true,
+      resize: function (event, ui) {
+        var width = ui.size.width;
+        var height = ui.size.height;
+        $('.lines-cntr').attr('width', width);
+        $('.lines-cntr').attr('height', height);
+      }
+    });
+
+
+  })
 </script>
 <style>
-  #gallery-title {
-    height: 100%;
-    margin-top: 75%;
+  .lines-cntr {
+    z-index: -999;
+    opacity: 0;
+    margin: 0;
   }
+
+  @media (max-width: 1120px) {
+    .lines-cntr {
+      opacity: 0;
+    }
+  }
+
+  .social-blk {
+    position: absolute;
+    top: 90%;
+    left: calc(50% - (368.45px / 2));
+    opacity: 0;
+  }
+  
+  .social-insta{
+    transition: all .3s;
+  }
+  
+  .social-insta:hover{
+    transform: scale(1.1);
+  }
+
+  .social-venmo{
+    transition: all .3s;
+  }
+
+  .social-venmo:hover{
+    transform: scale(1.1);
+  }
+
 </style>
 
 {% endblock content %}

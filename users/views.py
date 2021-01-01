@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import request, HttpResponse
 
-from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm, GalleryForm
+from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm
 from .models import Product
 from django.views.generic import ListView
 from django.contrib import messages
@@ -35,6 +35,10 @@ def request(request):
             obj = form.save(commit=False)
             obj.orderId = random_with_N_digits(10)
             obj.orderNumber = random_with_N_digits(10)
+            if(obj.gender):
+                obj.hasShoe = False
+            else:
+                obj.hasShoe = True
             form.save()
             
             return redirect("index")

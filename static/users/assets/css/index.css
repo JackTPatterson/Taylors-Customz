@@ -17,6 +17,8 @@
     transition: all 0.3s ease-out;
 }
 
+
+
 .start-header.scroll-on .navbar-brand img {
     height: 28px;
     -webkit-transition: all 0.3s ease-out;
@@ -43,6 +45,7 @@
     display: block;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+    
 }
 
 .navbar-toggler {
@@ -400,7 +403,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .center-content {
     position: absolute;
-    top: 42%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
@@ -428,10 +431,9 @@ body {
     font-size: calc(6vw + 1pc);
     color: lightgrey;
     font-weight: bold;
-
-    
     opacity: 0;
     color: #303030;
+    mix-blend-mode: difference;
 }
 
 .img-center {

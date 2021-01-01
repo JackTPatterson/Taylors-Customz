@@ -1,53 +1,48 @@
 {% extends "users/base.html" %}
 
 {% block styles %}
-  <link rel="stylesheet" href='../../static/users/assets/css/gallery.css'>
+<link rel="stylesheet" href='../../static/users/assets/css/gallery.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+<script src="../../static/users/assets/js/transition.min.js"></script>
+<script src="../../static/users/assets/js/zoom.min.js"></script>
+<link href="../../static/users/assets/css/zoom.css" rel="stylesheet">
 {% endblock styles %}
 
 {% block content %}
-        <h1 class='page-header'>Gallery</h1>
-
+<h1 class='page-header'>Gallery</h1>
 <div class="responsive">
-<div class="grid" style='margin-top: 10px;'>
+  <div class="grid" style='margin-top: 10px;'>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe1.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe1.jpg" id='img1' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe2.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe2.jpg" id='img2' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe3.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe3.jpg" id='img3' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe4.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe4.jpg" id='img4' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe5.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe5.jpg" id='img5' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe6.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe6.jpg" id='img6' data-action="zoom" />
     </div>
     <div class="grid--item">
-      <img class='grid-img' src="../../static/users/assets/images/shoe7.jpg"/>
+      <img class='grid-img' src="../../static/users/assets/images/shoe7.jpg" id='img7' data-action="zoom" />
     </div>
-
-    
+    <div class="grid--item">
+      <img class='grid-img' src="../../static/users/assets/images/shoe8.jpg" id='img8' data-action="zoom" />
+    </div>
   </div>
 
+
+
   <script src="../../static/users/assets/js/gridify.min.js"></script>
-<script>
+  <script src="../../static/users/assets/js/galleryAnimation.js"></script>
 
-    const gridify = new Gridify();
 
-const container = document.querySelector('.grid');
-
-container.addEventListener('gridify:init', (ev) => {
-  console.log('Init handler');
-}, false);
-
-container.addEventListener('gridify:resized', (ev) => {
-  console.log('Resized handler');
-}, false);
-
-</script>
-{% endblock content %}
+  {% endblock content %}

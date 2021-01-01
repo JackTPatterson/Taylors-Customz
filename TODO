@@ -1,5 +1,10 @@
-Add back social section
-    -- Fix social text align
-Ask if she wants custom name or predefined name - request form shoe name
+- Add back social section
+    - Fix social text align
+- Ask if she wants custom name or predefined name - request form shoe name
 
-Add admin gallery add / modify / delete
+- Fix hasShoe boolean fields - Doesnt submit if checkbox is not checked
+
+- add address if customer owns shoes in email sent to them
+
+- ADD THE SHOE OPTIONS SHIT
+    - Make shoe images fit page on smaller devices

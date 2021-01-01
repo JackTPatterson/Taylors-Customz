@@ -11,7 +11,7 @@ class Product(models.Model):
     shoe_size = models.CharField(max_length=100, null=True)
     gender = models.CharField(max_length=100, null=False, blank=True)
     email = models.EmailField(blank=True)
-    hasShoe = models.BooleanField(blank=True, default=True)
+    hasShoe = models.BooleanField(blank=True, default=False, null=True)
 
     date_submitted = models.DateTimeField(default=tz.now())
 
@@ -26,7 +26,3 @@ class Product(models.Model):
     def __str__(self):
        return f'{self.first_name.capitalize()}' + ' ' + f'{self.last_name.capitalize()}' + ' ➜ ' + f'{self.shoe_name}'
     
-class Gallery(models.Model):
-    shoe_name = models.CharField(max_length=100, null=False, blank=True)
-    photo = models.ImageField(default='shoe.jpg', upload_to='media/gallery', blank=True)
-    price = models.CharField(max_length=100, blank=True)
