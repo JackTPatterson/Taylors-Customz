@@ -1,190 +1,152 @@
 {% extends 'users/base.html' %}
 
+
 {% block styles %}
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <link rel='stylesheet' href='../../static/users/assets/css/list.css'>
+<link rel='stylesheet' href='../../static/users/assets/css/tailwind.css'>
+
 {% endblock styles %}
 
 {% block content %}
-  <h1 class='page-header' id='req-title'>Orders</h1>
-
-<div class='cbx-blk'>
+  <h1 class='page-header text-5xl mb-10' id='req-title'>Orders</h1>
   <center>
-    <div class='inner-blk'>
-      <input class="inp-cbx" id="morning" type="checkbox" />
-      <label class="cbx" for="morning" style='padding-top: 5px;'><span>
-          <svg width="12px" height="10px">
-            <use xlink:href="#check"></use>
-          </svg></span><span>Requested</span></label>
-      <input class="inp-cbx" id="noon" type="checkbox" />
-      <label class="cbx" for="noon"><span>
-          <svg width="12px" height="10px">
-            <use xlink:href="#check"></use>
-          </svg></span><span>Accpeted</span></label>
-      <input class="inp-cbx" id="afternoon" type="checkbox" />
-      <label class="cbx" for="afternoon"><span>
-          <svg width="12px" height="10px">
-            <use xlink:href="#check"></use>
-          </svg></span><span>Denied</span></label>
-      <input class="inp-cbx" id="evening" type="checkbox" style="display: none" />
-      <label class="cbx" for="evening"><span>
-          <svg width="12px" height="10px">
-            <use xlink:href="#check"></use>
-          </svg></span><span>Completed</span></label>
-      <!--SVG Sprites-->
-      <svg class="inline-svg">
-        <symbol id="check" viewbox="0 0 12 10">
-          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-        </symbol>
-      </svg>
+  <div class="p-4 w-11/12">
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded-xl p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-yellow-100 text-blue-500">
 
+<svg class='stroke-current text-yellow-400' xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Requested</div>
+            <div class="font-bold text-lg">
+             </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded-xl p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-green-500">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3d74ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Accepted</div>
+            <div class="font-bold text-lg">230</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded-xl p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-red-100 text-red-500">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff4242" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Denied</div>
+            <div class="font-bold text-lg">$ 32k</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded-xl p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d13b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Completed</div>
+            <div class="font-bold text-lg">230</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   </center>
-</div>
-<div class='requested-blk'>
-  <h1 class='page-header' id='req-title'>Requested</h1>
-  <div class='table-aln'>
-    <div class="row">
-      <div id="admin" class="col s12">
-        <div class="card material-table" id='dt-tbl'>
-
-          <table id="datatable">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Brand</th>
-                <th>Order Number</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {% for product in product %}
-              {% if not product.denied and not product.accepted %}
-              <tr>
-                <td><a href="{% url 'list-detail' product.orderId %}">{{product.first_name.capitalize}}</a></td>
-                <td>{{product.last_name.capitalize}}</td>
-                <td>{{product.shoe_name}}</td>
-                <td>{{product.orderNumber}}</td>
-              </tr>
-              {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+<center>
+<div class="flex flex-col w-11/12">
+  <div class="-my-2 sm:-mx-6 lg:-mx-8  rounded-lg">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Shoe
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Order Number
+              </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {% for product in product %}
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      {{product.first_name.capitalize}} {{product.last_name.capitalize}}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{product.email}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">{{product.shoe_name}}</div>
+                
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                {% if not product.denied and not product.accepted %}
+                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-black">
+                  Requested
+                </span>
+                {% endif %}
+                {% if product.accepted %}
+                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-black">
+                  Accepted
+                </span>
+                {% endif %}
+                {% if product.denied %}
+                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-black">
+                  Denied
+                </span>
+                {% endif %}
+                {% if product.completed %}
+                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
+                  Completed
+                </span>
+                {% endif %}
+                
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{product.orderNumber}}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <a href="{% url 'order-detail' product.orderNumber %}" class="text-indigo-600 hover:text-indigo-900">View Order</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
-<div class='accepted-blk'>
-  <h1 class='page-header' id='req-title'>Accepted</h1>
-  <div class='table-aln'>
-    <div class="row">
-      <div id="admin" class="col s12">
-        <div class="card material-table" id='dt-tbl'>
+</center>
 
-          <table id="datatable">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Brand</th>
-                <th>Order Number</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {% for product in product %}
-              {% if product.accepted %}
-              <tr>
-                <td><a href="{% url 'list-detail' product.orderId %}">{{product.first_name.capitalize}}</a></td>
-                <td>{{product.last_name.capitalize}}</td>
-                <td>{{product.shoe_name}}</td>
-                <td>{{product.orderNumber}}</td>
-              </tr>
-              {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class='denied-blk'>
-  <h1 class='page-header' id='req-title'>Denied</h1>
-
-  <div class='table-aln'>
-    <div class="row">
-      <div id="admin" class="col s12">
-        <div class="card material-table" id='dt-tbl'>
-
-          <table id="datatable">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Brand</th>
-                <th>Order Number</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {% for product in product %}
-              {% if product.denied %}
-              <tr>
-                <td><a href="{% url 'list-detail' product.orderId %}">{{product.first_name.capitalize}}</a></td>
-                <td>{{product.last_name.capitalize}}</td>
-                <td>{{product.shoe_name}}</td>
-                <td>{{product.orderNumber}}</td>
-              </tr>
-              {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class='completed-blk'>
-
-  <h1 class='page-header' id='req-title'>Completed</h1>
-
-  <div class='table-aln'>
-    <div class="row">
-      <div id="admin" class="col s12">
-        <div class="card material-table" id='dt-tbl'>
-
-          <table id="datatable">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Brand</th>
-                <th>Order Number</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {% for product in product %}
-              {% if product.completed %}
-              <tr>
-                <td><a href="{% url 'list-detail' product.orderId %}">{{product.first_name.capitalize}}</a></td>
-                <td>{{product.last_name.capitalize}}</td>
-                <td>{{product.shoe_name}}</td>
-                <td>{{product.orderNumber}}</td>
-              </tr>
-              {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 <br>
 <style>
   label {

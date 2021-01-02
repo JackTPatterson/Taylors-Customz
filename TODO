@@ -1,5 +1,4 @@
-- Add back social section
-    - Fix social text align
+
 - Ask if she wants custom name or predefined name - request form shoe name
 
 - Fix hasShoe boolean fields - Doesnt submit if checkbox is not checked
@@ -8,3 +7,10 @@
 
 - ADD THE SHOE OPTIONS SHIT
     - Make shoe images fit page on smaller devices
+
+- MAKE COMPLETED VIEW SEND EMAIL
+
+
+
+- Production checklist
+    - change url stuff to admin not tadmin

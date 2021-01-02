@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import request, HttpResponse
 
-from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm
+from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm, CompletedForm
 from .models import Product
 from django.views.generic import ListView
 from django.contrib import messages
@@ -55,12 +55,16 @@ class AdminListView(LoginRequiredMixin, ListView):
     context_object_name = 'product'
     ordering = ['-date_submitted']
     paginate_by = 20
+
     
 
 
 
-def requestDetail(request, orderId):
-    instance = Product.objects.get(orderId=orderId)
+
+
+
+def requestDetail(request, orderNumber):
+    instance = Product.objects.get(orderNumber=orderNumber)
     return render(request, 'users/product_detail.html', {'instance': instance})
 
 
@@ -88,10 +92,9 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
-#!This shit dont work
 def handler404(request, exception):
-    data = {}
-    return render(request, 'users/404.html', data)
+
+    return render(request, 'users/404.html')
 
 
 def accept(request, orderId):
@@ -217,6 +220,17 @@ def delete(request, orderId):
     redirect('list')
     return HttpResponse("Data has been deleted")
 
-def dashboard(request):
-    form = GalleryForm(request.POST)
-    return render(request, 'users/admin.html')
+def complete(request, orderId):
+    form = CompletedForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.completed = True
+            obj.accepted = False
+            obj.denied = False
+            obj.save()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/completed.html', context)

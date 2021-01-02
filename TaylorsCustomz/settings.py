@@ -23,7 +23,7 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 's9agcxf64@4p9l)$w#2wkng5t=-e8g2&xa)vs(%4%7$l4ph7u0'
-    
+
 # SECURITY WARNING: don't run with debug turned on in production!
 #!Need to fix static shit when debug = True
 DEBUG = True
@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     "widget_tweaks",
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

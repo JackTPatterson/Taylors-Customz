@@ -1,0 +1,25 @@
+{
+  "name": "taylorscustomz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "autoprefixer": "^10.1.0",
+    "clean-css-cli": "^4.3.0",
+    "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:css": "tailwind build ./users/static/users/assets/css/init.css cleancss -o ./users/static/users/assets/css/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackTPatterson/taylors-Customz.git"
+  },
+  "author": "Jack Patterson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackTPatterson/taylors-Customz/issues"
+  },
+  "homepage": "https://github.com/JackTPatterson/taylors-Customz#readme"
+}

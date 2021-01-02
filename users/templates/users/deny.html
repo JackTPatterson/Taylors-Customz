@@ -14,23 +14,10 @@
 <div class='form-blk'>
     <form method="post" action="">
         {% csrf_token %}
-        {{form.price}}
         {{form.message}}
         <button type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
     </form>
 </div>
 
-<script>
-    setInterval(function () {
-        if ($("#prc-form").is(':focus') && !$("#prc-form").val().includes("$")) {
-            $("#prc-form").val("$").before()
-        }
-        if (!$("#prc-form").is(':focus') && $("#prc-form").val().includes("$")) {
-            if ($("#prc-form").val().length < 2) {
-                $("#prc-form").val("")
-            }
-        }
-    }, 100)
-</script>
 
 {% endblock content %}
