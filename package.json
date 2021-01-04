@@ -8,7 +8,9 @@
     "clean-css-cli": "^4.3.0",
     "tailwindcss": "^2.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.2.1"
+  },
   "scripts": {
     "build:css": "tailwind build ./users/static/users/assets/css/init.css cleancss -o ./users/static/users/assets/css/tailwind.css"
   },

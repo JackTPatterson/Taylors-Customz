@@ -35,10 +35,11 @@ def request(request):
             obj = form.save(commit=False)
             obj.orderId = random_with_N_digits(10)
             obj.orderNumber = random_with_N_digits(10)
-            if(obj.gender):
-                obj.hasShoe = False
-            else:
+            print(obj.gender)
+            if(obj.gender == "Select Gender"):
                 obj.hasShoe = True
+            else:
+                obj.hasShoe = False
             form.save()
             
             return redirect("index")
@@ -55,6 +56,15 @@ class AdminListView(LoginRequiredMixin, ListView):
     context_object_name = 'product'
     ordering = ['-date_submitted']
     paginate_by = 20
+
+    extra_context = {
+        'requested': Product.objects.filter(accepted=False, denied=False, completed=False).count(),
+        'accepted': Product.objects.filter(accepted=True).count(),
+        'denied': Product.objects.filter(denied=True).count(),
+        'completed': Product.objects.filter(completed=True).count(),
+        }
+
+
 
     
 
@@ -225,10 +235,11 @@ def complete(request, orderId):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.completed = True
-            obj.accepted = False
-            obj.denied = False
-            obj.save()
+            Product.objects.filter(orderId=orderId).update(
+                completed=True,
+                accepted=False,
+                denied=False,
+)          
 
     context = {
         'form': form

@@ -10,7 +10,6 @@
 {% endblock styles %}
 
 {% block content %}
-<h1 class='page-header'>Gallery</h1>
 <div class="responsive">
   <div class="grid" style='margin-top: 10px;'>
     <div class="grid--item">
@@ -39,7 +38,11 @@
     </div>
   </div>
 
-
+<script>
+  $(document).ready(function(){
+       $('#header-text').html("Gallery")
+   });
+  </script>
 
   <script src="../../static/users/assets/js/gridify.min.js"></script>
   <script src="../../static/users/assets/js/galleryAnimation.js"></script>

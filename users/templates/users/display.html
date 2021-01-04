@@ -5,33 +5,33 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
 <script src='../../static/users/assets/js/displayAnimation.js'></script>
+<link rel='stylesheet' href='../../static/users/assets/css/tailwind.css'>
 {% endblock styles %}
 
 {% block content %}
-<h1 class='page-header'>Shoe Options</h1>
-<center>
-  <table>
-    <td class='btn-title-table active'>
-      <h1>All</h1>
+<!-- <center>
+  <table class='mt-4'>
+    <td class='btn-title-table'>
+      <h1 id='all' class='stroke-current text-black text-5xl fill-current text-white'>All</h1>
     </td>
     <td class='btn-title-table'>
-      <h1>Vans</h1>
+      <h1 id='vans' class='stroke-current text-black text-5xl fill-current text-white'>Vans</h1>
     </td>
     <td class='btn-title-table'>
-      <h1>Nike</h1>
+      <h1 id='nike' class='stroke-current text-black text-5xl fill-current text-white'>Nike</h1>
     </td>
     <td class='btn-title-table'>
-      <h1>Converse</h1>
+      <h1 id='converse' class='stroke-current text-black text-5xl fill-current text-white'>Converse</h1>
     </td>
     <td class='btn-title-table'>
-      <h1>Timberlands</h1>
+      <h1 id='timbs' class='stroke-current text-black text-5xl fill-current text-white'>Timberlands</h1>
     </td>
     <td class='btn-title-table'>
-      <h1>More</h1>
+      <h1 id='more' class='stroke-current text-black text-5xl fill-current text-white'>More</h1>
     </td>
 
   </table>
-</center>
+</center> -->
 
 <div class="responsive">
   <div class="grid" style='margin-top: 10px;' id='img1'>
@@ -112,4 +112,10 @@
 
     }
   </style>
+
+  <script>
+    $(document).ready(function(){
+       $('#header-text').html("Shoe Options")
+   });
+  </script>
   {% endblock content %}

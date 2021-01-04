@@ -69,13 +69,14 @@ class ProductCreationForm(forms.ModelForm):
 		 }
 	 ))
 
-	hasShoe = forms.BooleanField(widget=forms.CheckboxInput(
-		 attrs={
-			 'class': 'inp-cbx',
-			 'style': 'display: none;',
-			 'id': 'cbx',
-		 }
-	 ))
+	# hasShoe = forms.BooleanField(widget=forms.CheckboxInput(
+	# 	 attrs={
+	# 		 'class': 'inp-cbx',
+	# 		 'style': 'display: none;',
+	# 		 'id': 'cbx',
+	# 		 'required': "false"
+	# 	 }
+	#  ))
 
 	email = forms.EmailField(widget=forms.EmailInput(
 		 attrs={
@@ -100,7 +101,7 @@ class ProductCreationForm(forms.ModelForm):
 
 	class Meta:
 		model = Product
-		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price']
+		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price', 'hasShoe']
 
 class AcceptForm(forms.ModelForm):
 
