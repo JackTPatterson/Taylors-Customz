@@ -80,6 +80,11 @@ label:focus,
     float: right;
 }
 
+#choice-select {
+    margin-bottom: 10px;
+    float: right;
+}
+
 #gender-select {
     width: 49%;
 }

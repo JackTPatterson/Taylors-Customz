@@ -29,6 +29,11 @@ GENDER = [
 	('Female', 'Female'),
 ]
 
+HASSHOES = [
+	('Select Choice', 'Select Choice'),
+	('I own these shoes', 'I own these shoes'),
+	('I need these shoes', 'I need these shoes'),
+]
 
 class ProductCreationForm(forms.ModelForm):
 
@@ -69,14 +74,7 @@ class ProductCreationForm(forms.ModelForm):
 		 }
 	 ))
 
-	# hasShoe = forms.BooleanField(widget=forms.CheckboxInput(
-	# 	 attrs={
-	# 		 'class': 'inp-cbx',
-	# 		 'style': 'display: none;',
-	# 		 'id': 'cbx',
-	# 		 'required': "false"
-	# 	 }
-	#  ))
+	hasShoe = forms.CharField(widget=forms.Select(choices=HASSHOES))
 
 	email = forms.EmailField(widget=forms.EmailInput(
 		 attrs={
@@ -101,7 +99,7 @@ class ProductCreationForm(forms.ModelForm):
 
 	class Meta:
 		model = Product
-		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price', 'hasShoe']
+		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price', ]
 
 class AcceptForm(forms.ModelForm):
 

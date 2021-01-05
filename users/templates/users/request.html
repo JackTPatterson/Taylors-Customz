@@ -5,6 +5,7 @@
 <link href="../static/users/assets/css/request.css" rel='stylesheet'>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
+
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
@@ -18,60 +19,28 @@
         {{form.last_name}}
         {{form.email}}
         {{form.description}}
-
-
-
         {{form.photo}}
 
         
-        
-<input class="inp-cbx" id="morning" type="checkbox"/>
-<label class="cbx" for="morning"><span>
-    <svg width="12px" height="10px">
-      <use xlink:href="#check"></use>
-    </svg></span><span>I own these shoes</span></label>
-
-<svg class="inline-svg">
-  <symbol id="check" viewbox="0 0 12 10">
-    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-  </symbol>
-</svg>
+        {{form.hasShoe |attr:"class:custom-select" |attr:"id:choice-select"}}
         {{form.shoe_name}}
-        <div class='shoe-option'>
+        
             
             {{form.shoe_size |attr:"class:custom-select" |attr:"id:shoe-select"}}
             {{form.gender |attr:"class:custom-select" |attr:"id:gender-select"}}
-        </div>
+       
             <button data-sitekey="6LeUZA0aAAAAALGcXDiCGdOrCnURy1xp_dDrTYds"
         data-callback='onSubmit' 
         data-action='submit' type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
     </form>
 </div>
 
-
-
 <script>
-    setInterval(function () {
-        if ($('#morning').prop("checked") == true) {
-            $('.shoe-option').hide();
-            $('#req-form-shoe-name').val("null");
-
-        }
-        else{
-            $('.shoe-option').show();
-        }
-
-        
-    }, 100);
-
     function onSubmit(token) {
      document.getElementById("demo-form").submit();
     $('#cbx').prop( "checked", true );
-    
+   }   
 
-   }
-
-   
    $(document).ready(function(){
        $('#header-text').html("Request Design")
    });

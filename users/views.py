@@ -14,8 +14,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from random import randint
+from TaylorsCustomz import settings
 # Create your views here.
-
 
 def index(request):
     return render(request, 'users/index.html')
@@ -35,11 +35,7 @@ def request(request):
             obj = form.save(commit=False)
             obj.orderId = random_with_N_digits(10)
             obj.orderNumber = random_with_N_digits(10)
-            print(obj.gender)
-            if(obj.gender == "Select Gender"):
-                obj.hasShoe = True
-            else:
-                obj.hasShoe = False
+            
             form.save()
             
             return redirect("index")
@@ -54,8 +50,7 @@ class AdminListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'users/product_list'  # <app>/<model>_<viewtype>.html
     context_object_name = 'product'
-    ordering = ['-date_submitted']
-    paginate_by = 20
+    ordering = ['-date_submitted', 'completed']
 
     extra_context = {
         'requested': Product.objects.filter(accepted=False, denied=False, completed=False).count(),
@@ -63,14 +58,6 @@ class AdminListView(LoginRequiredMixin, ListView):
         'denied': Product.objects.filter(denied=True).count(),
         'completed': Product.objects.filter(completed=True).count(),
         }
-
-
-
-    
-
-
-
-
 
 
 def requestDetail(request, orderNumber):
@@ -136,7 +123,11 @@ def accept(request, orderId):
             )
             msg.content_subtype = "html" 
             msg.send()
-            redirect('list')
+
+            if settings.DEBUG:
+                return redirect('/tadmin/{}'.format(instance.orderNumber))
+            if not settings.DEBUG:
+                return redirect('/admin/{}'.format(instance.orderNumber))
 
     context = {
         'instance': instance,
@@ -171,7 +162,7 @@ def deny(request, orderId):
             )
             msg.content_subtype = "html"
             msg.send()
-            redirect('list')
+            return redirect('list')
 
     context = {
         'instance': instance,
@@ -205,7 +196,11 @@ def email(request, orderId):
             )
             msg.content_subtype = "html"
             msg.send()
-            redirect('list')
+
+            if settings.DEBUG:
+                return redirect('/tadmin/{}'.format(instance.orderNumber))
+            if not settings.DEBUG:
+                return redirect('/admin/{}'.format(instance.orderNumber))
 
     context = {
         'instance': instance,
@@ -218,8 +213,7 @@ def email(request, orderId):
 def admin(request):
     return render(request, 'users/admin.html')
 
-def displayDetail(request):
-    return render(request, 'users/display.html')
+
 
 def gallery(request):
     return render(request, 'users/gallery.html')
@@ -232,14 +226,33 @@ def delete(request, orderId):
 
 def complete(request, orderId):
     form = CompletedForm(request.POST)
+
+    instance = Product.objects.get(orderId=orderId)
+    
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
+            message = obj.message
             Product.objects.filter(orderId=orderId).update(
                 completed=True,
                 accepted=False,
                 denied=False,
-)          
+
+            )
+            ctx = {
+                'url': instance.orderId,
+                'message': message
+            }
+            message = get_template('users/emails/completed.html').render(ctx)
+            msg = EmailMessage(
+                'Order Completed',
+                message,
+                'jpattersonservices@gmail.com',
+                ['jpattersonservices@gmail.com'],
+            )
+            msg.content_subtype = "html"
+            msg.send()
+            return redirect('list')
 
     context = {
         'form': form

@@ -8,15 +8,21 @@
 
 {% block content %}
 
-<center>
-    <h1 class='main-head'>Specify a message for the email</h1>
-</center>
+
 <div class='form-blk'>
+    <center>
+        <h1 class='text-xl'>Write a message to the recipient</h1>
+    </center>
     <form method="post" action="">
         {% csrf_token %}
         {{form.message}}
         <button type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#header-text').html("Email Recipient")
+    });
+</script>
 
 {% endblock content %}

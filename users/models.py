@@ -11,7 +11,7 @@ class Product(models.Model):
     shoe_size = models.CharField(max_length=100, null=True, blank=True)
     gender = models.CharField(max_length=100, null=False, blank=True)
     email = models.EmailField(blank=True)
-    hasShoe = models.BooleanField(blank=True, default=False, null=True)
+    hasShoe = models.CharField(max_length=100)
 
     date_submitted = models.DateTimeField(default=tz.now())
 
@@ -19,7 +19,6 @@ class Product(models.Model):
     orderId = models.IntegerField(verbose_name="Order Id", null=True, unique=True)
     completed = models.BooleanField(default=False)
     accepted = models.BooleanField(default=False)
-    #requested = models.BooleanField(default=True)
     denied = models.BooleanField(default=False)
     price = models.CharField(max_length=100, blank=True)
     message = models.CharField(max_length=255, blank=True)
