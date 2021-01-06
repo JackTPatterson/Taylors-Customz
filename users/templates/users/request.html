@@ -13,7 +13,7 @@
 
 {% block content %}
 <div class='req-form'>
-    <form id='demo-form' method="post" action="" enctype="multipart/form-data">
+    <form class='mb-4' id='demo-form' method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.first_name}}
         {{form.last_name}}
@@ -34,6 +34,7 @@
         data-action='submit' type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
     </form>
 </div>
+
 
 <script>
     function onSubmit(token) {
