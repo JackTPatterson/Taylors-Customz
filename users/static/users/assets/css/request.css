@@ -1,21 +1,10 @@
-.req-form {
-    width: 40%;
-    margin-top: 20px;
-    position: absolute;
-    margin-top: 100px;
-}
 
-@media (min-height: 700px) {
-    .req-form {
-        left: 40px;
-    }
-}
 
-@media (max-width: 1000px) {
+
     .req-form {
         width: 90%;
         position: absolute;
-        top: 50%;
+        margin-top: 350px;
         left: 50%;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
@@ -23,7 +12,7 @@
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
     }
-}
+
 
 @media (max-height: 700px) {
     .req-form {

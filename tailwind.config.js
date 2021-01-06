@@ -1,4 +1,5 @@
 module.exports = {
+    darkMode: false,
     future: {
         removeDeprecatedGapUtilities: true,
         purgeLayersByDefault: true,
@@ -11,11 +12,12 @@ module.exports = {
         ]
     },
     theme: {
-        colors: {
-            'primary': '#0096C7',
-            'secondary': '#023E8A',
-            'dark': '#03045E'
-        }
+        extend: {
+            colors: {
+                'primary': '#00B4D8',
+                'secondary': '#0096C7'
+            }
+        },
     },
     variants: {},
     plugins: [
