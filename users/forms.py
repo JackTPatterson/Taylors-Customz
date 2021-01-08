@@ -99,7 +99,7 @@ class ProductCreationForm(forms.ModelForm):
 
 	class Meta:
 		model = Product
-		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price', ]
+		exclude = ['date_submitted', 'completed', 'orderNumber', 'orderId', 'completed', 'started', 'price', 'archived']
 
 class AcceptForm(forms.ModelForm):
 
@@ -167,3 +167,4 @@ class CompletedForm(forms.ModelForm):
 	class Meta:
 		model = Product
 		fields = ('message',)
+

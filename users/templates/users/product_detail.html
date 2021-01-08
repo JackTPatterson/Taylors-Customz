@@ -1,101 +1,102 @@
 {% extends 'users/base.html' %}
 
 {% block styles %}
-
-{% endblock styles %}
-
-{% block content %}
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src="../../static/users/assets/js/transition.min.js"></script>
 <script src="../../static/users/assets/js/zoom.min.js"></script>
 
 <link href="../../static/users/assets/css/zoom.css" rel="stylesheet">
 <link href="../../static/users/assets/css/admin.css" rel="stylesheet">
-<!-- 
+{% endblock styles %}
 
-<div class='leftpane'>
-    <h1 class='page-header' id='req-title' style='margin-left: 38px;'>{{ instance.first_name.capitalize }} {{ instance.last_name.capitalize }}</h1>
-
-    <p class='shoe-name-info'>{{ instance.shoe_name }}</p>
-
-
-    <p class='shoe-p' id='gender'>Gender: <span class='gender-num'>{{instance.gender}}</span></p>
-    <p class='shoe-p' id='size'>Size: <span class='size-num'>{{instance.shoe_size}}</span></p>
-
-    {% if instance.hasShoe%}
-    <p class='shoe-p'>This client owns these shoes</p>
-    {% else %}
-    <p class='shoe-p'>This client does not own these shoes</p>
-    {% endif %}
-    <h1 class='ref-h1'>Reference Image</h1>
-    <img class='ref-img' src="../../../media/{{instance.photo}}"
-        data-action="zoom">
-</div>
-<div class='middlepane'>
-    <h1 class='page-header'>Description</h1>
-    <p>{{instance.description}}</p>
-</div>
-<div class='rightpane'>
-    <h1 class='page-header'>Date Requested</h1>
-    <p class='upload-date'>{{instance.date_submitted}}</p>
-    <br>
-    <h1 class='page-header'>Order #</h1>
-    <p class='upload-date'>{{instance.orderNumber}}</p>
-    <br>
-    {% if instance.price and '$' in instance.price %}
-    <h1 class='page-header'>Price</h1>
-    <p class='upload-date'>{{instance.price}}</p>
-    {% elif instance.price %}
-    {% endif %}
-</div>
-{% if user.is_authenticated %}
-<div class='btn-group-admin'>
-    {% if not instance.accepted %}
-    <button onclick='window.location.href="{% url 'detail-accept' instance.orderId %}"' type="submit" id='acc-sbmt'
-        class="btn btn-primary">Accept</button>
-    {% endif %}
-    {% if not instance.denied %}
-    <button onclick='window.location.href="{% url 'detail-deny' instance.orderId %}"' type="submit" id='deny-sbmt'
-        class="btn btn-primary">Deny</button>
-    {% endif %}
-    <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="submit" id='email-sbmt'
-        class="btn btn-primary">Email</button>
-    {% if instance.denied or instance.completed %}
-    <button onclick=deleteData() type="submit" id='deny-sbmt'
-        class="btn btn-primary" style='font-weight: bold; color: red'>DELETE</button>
-    {% endif %}
-    {% if instance.accepted %}
-    <button onclick='window.location.href="{% url 'detail-complete' instance.orderId %}"' type="submit" id='comp-sbmt'
-        class="btn btn-primary">COMPLETE</button>
-    {% endif %}
-</div>
-<style>
-.btn-group-admin{
-    background-color: white;
-    border-radius: 15px !important;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    padding: 5px;
-}
-</style> -->
+{% block content %}
 
 
 <center>
-  <div class="border-none border-gray-200 rounded-2xl shadow w-11/12 mt-14">
+  {% if not user.is_authenticated %}
+  {% if not instance.accepted and not instance.denied and not instance.completed %}
+  <div class="text-white px-6 py-4 border-0 rounded-2xl relative mt-4 bg-yellow-100 w-11/12 ">
+    <span class="inline-block align-middle mr-8">
+      <p class='text-black'>Your order will be reviewed as soon as possible - Please check back aftter you recive an
+        email</p>
+    </span>
+  </div>
+  {% endif %}
+  {% if  instance.accepted %}
+  <div class="text-white px-6 py-4 border-0 rounded-2xl relative mt-4 bg-blue-100 w-11/12 ">
+    <span class="inline-block align-middle mr-8">
+      <p class='text-black'>Your order has been accepted - If you have not payed yet, follow the link in the email or
+        click here to pay now</p>
+    </span>
+  </div>
+  {% endif %}
+  {% if instance.denied %}
+  <div class="text-white px-6 py-4 border-0 rounded-2xl relative mt-4 bg-red-100 w-11/12">
+    <span class="inline-block align-middle mr-8">
+      <p class='text-black'>Your order has been denied - Your order details will be archived shortly</p>
+    </span>
+  </div>
+  {% endif %}
+  {% if instance.completed %}
+  <div class="text-white px-6 py-4 border-0 rounded-2xl relative mt-4 bg-green-100 w-11/12 ">
+    <span class="inline-block align-middle mr-8">
+      <p class='text-black'>Your order has been completed - Follow the instructions given in the email sent to you
+        regarding your order completion</p>
+    </span>
+  </div>
+  {% endif %}
+  {% endif %}
+</center>
+<center>
+  <div class="py-4 w-11/12">
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-md transition-all hover:shadow-xl rounded-xl p-4">
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Full Name</div>
+            <div class="font-bold text-lg">
+              {{instance.first_name.capitalize}} {{instance.last_name.capitalize}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4">
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Shoe</div>
+            <div class="font-bold text-lg">{{instance.shoe_name}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
+          
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Price</div>
+             {% if instance.price %}
+            <div class="font-bold text-lg">{{instance.price}}</div>
+            {% elif not instance.price %}
+            <div class="font-bold text-lg">Price not specified</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
+          
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Order Number</div>
+            <div class="font-bold text-lg">{{instance.orderNumber}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+<center>
+  <div class="border-none border-gray-200 rounded-2xl shadow w-11/12 mt-2">
     <dl>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">
-          Full name
-        </dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ instance.first_name.capitalize }} {{ instance.last_name.capitalize }}
-        </dd>
-      </div>
-      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
           Email
         </dt>
@@ -103,28 +104,21 @@
           {{instance.email}}
         </dd>
       </div>
-      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">
-          Shoe
-        </dt>
-        <dd class="text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {{instance.shoe_name}}
-        </dd>
-      </div>
+      
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
           Customer Owns Shoes
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
           {% if instance.hasShoe == "I own these shoes" %}
-            Yes
+          Yes
           {% else %}
-            No
+          No
           {% endif %}
-           
+
         </dd>
       </div>
-       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
           Size
         </dt>
@@ -134,32 +128,10 @@
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
-          Price
-        </dt>
-        {% if instance.price %}
-        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {{instance.price}}
-        </dd>
-        {% elif not instance.price %}
-        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          Price not specified yet
-        </dd>
-        {% endif %}
-      </div>
-      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">
-          Order Number
-        </dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{instance.orderNumber}}
-        </dd>
-      </div>
-       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">
           Date Requested
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{instance.date_submitted}}
+          {{instance.date_submitted}}
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -167,110 +139,140 @@
           Description
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{instance.description}}
+          {{instance.description}}
         </dd>
       </div>
-       
+
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
-          Attachments
+          Reference Image
         </dt>
         <div class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <img class='ref-img' src="../../../media/{{instance.photo}}"
-        data-action="zoom">
+          <img class='ref-img' src="../../../media/{{instance.photo}}" data-action="zoom">
         </div>
       </div>
     </dl>
   </div>
-</div>
+  </div>
 </center>
 <center>
   <div class='w-11/12'>
-<div class="mt-5 flex pb-10">
-  {% if user.is_authenticated %}
-  {% if not instance.completed %}
-  {% if not instance.accepted and not instance.denied %}
-   <span class="">
-      <button onclick='window.location.href="{% url 'detail-accept' instance.orderId %}"' type="button" class="inline-flex items-center transition-all px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: check -->
-        <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-        Accept
-      </button>
-    </span>
-    {% endif %}
-    {% if instance.accepted %}
-     <span class="">
-      <button onclick='window.location.href="{% url 'detail-complete' instance.orderId %}"' type="button" class="inline-flex transition-all bg-primary  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: check -->
-        <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-        Complete
-      </button>
-    </span>
-    {% endif %}
-{% if not instance.accepted and not instance.denied %}
-    <span class="hidden sm:block ml-3">
-      <button onclick='window.location.href="{% url 'detail-deny' instance.orderId %}"' type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: link -->
-        <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-</svg>
-        </svg>
-        Deny
-      </button>
-    </span>
-    {% endif %}
-    
-    {% endif %}
-    {% if instance.denied or instance.completed %}
-    <span class="hidden sm:block ml-3">
-      <button onclick=deleteData() type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: link -->
-        <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-</svg>
-        </svg>
-        Delete
-      </button>
-    </span>
-    {% endif %}
-    
+    <div class="mt-5 flex pb-10">
+      {% if user.is_authenticated %}
+      {% if not instance.completed %}
+      {% if not instance.accepted and not instance.denied %}
+      <span class="">
+        <button onclick='window.location.href="{% url 'detail-accept' instance.orderId %}"' type="button"
+          class="inline-flex items-center transition-all px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: check -->
+          <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+            aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd" />
+          </svg>
+          Accept
+        </button>
+      </span>
+      {% endif %}
+      {% if instance.accepted %}
+      <span class="mr-3">
+        <button onclick='window.location.href="{% url 'detail-complete' instance.orderId %}"' type="button"
+          class="inline-flex transition-allbg-white text-gray-700 hover:bg-gray-50  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: check -->
+          <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+            aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd" />
+          </svg>
+          Complete
+        </button>
+      </span>
+      {% endif %}
+      {% if not instance.accepted and not instance.denied %}
+      <span class="sm:block ml-3 mr-3">
+        <button onclick='window.location.href="{% url 'detail-deny' instance.orderId %}"' type="button"
+          class="inline-flex transition-all bg-white text-gray-700 hover:bg-gray-50  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: link -->
+          <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+            fill="currentColor" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </svg>
+          Deny
+        </button>
+      </span>
+      {% endif %}
 
-     <span class="sm:ml-3">
-      <button  onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <!-- Heroicon name: check -->
-        <svg class='-ml-1 mr-2 h-5 w-' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-</svg>
-        Email
-      </button>
-    </span>
-  </div>
+      {% endif %}
+
+      <!-- Add confirmation to the archive btn-->
+      {% if instance.denied or instance.completed %}
+      {% if not instance.archived %}
+
+      <span class="mr-3">
+        <button onclick='window.location.href="{% url 'archive' instance.orderId %}"' type="button"
+          class="inline-flex transition-all bg-white text-gray-700 hover:bg-gray-50  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: check -->
+
+          <svg class="ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+          Archive
+        </button>
+      </span>
+      {% endif %}
+      {% if instance.archived %}
+      <span class="mr-3">
+        <button onclick=deleteData() type="button"
+          class="inline-flex transition-allbg-white text-gray-700  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: link -->
+          <svg class="md:ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          </svg>
+          Delete
+        </button>
+      </span>
+      {% endif %}
+      {% endif %}
+
+      <span class="">
+        <button onclick='window.location.href="{% url 'detail-email' instance.orderId %}"' type="button"
+          class="inline-flex transition-all bg-white text-gray-700 hover:bg-gray-50  items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <!-- Heroicon name: check -->
+          <svg class='ml-1 mr-2 h-5 w-' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Email
+        </button>
+      </span>
+    </div>
   </div>
 </center>
-
-
-
 {% endif %}
 
-<script>    function deleteData(){
-        var r = confirm("Are you sure you want to delete this order. You will never be able to get it back");
-        if(r == true){
-            window.location.href="{% url 'delete' instance.orderId %}"
-        }
+
+
+<script>
+  function deleteData() {
+    var r = confirm("Are you sure you want to delete this order. You will never be able to get it back");
+    if (r == true) {
+      window.location.href = "{% url 'delete' instance.orderId %}"
     }
+  }
 
-      $(document).ready(function(){
-       $('#header-text').html("Order Details")
-   });
-    
-
+  $(document).ready(function () {
+    $('#header-text').html("Order Details")
+  });
 </script>
-
-{% endif %}
 
 {% endblock content %}

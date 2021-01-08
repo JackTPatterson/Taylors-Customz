@@ -7,7 +7,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import request, HttpResponse
 
-from .forms import ProductCreationForm, AcceptForm, DenyForm, EmailForm, CompletedForm
+from .forms import (
+    ProductCreationForm, 
+    AcceptForm, 
+    DenyForm, 
+    EmailForm, 
+    CompletedForm, 
+    )
 from .models import Product
 from django.views.generic import ListView
 from django.contrib import messages
@@ -50,11 +56,24 @@ class AdminListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'users/product_list'  # <app>/<model>_<viewtype>.html
     context_object_name = 'product'
-    ordering = ['-date_submitted', 'completed']
+    ordering = ['-date_submitted']
 
     extra_context = {
         'requested': Product.objects.filter(accepted=False, denied=False, completed=False).count(),
         'accepted': Product.objects.filter(accepted=True).count(),
+        'denied': Product.objects.filter(denied=True).count(),
+        'completed': Product.objects.filter(completed=True).count(),
+        }
+
+class ArchivedOrders(ListView, LoginRequiredMixin):
+    login_url = '/login/'
+
+    model = Product
+    template_name = 'users/archived_list.html'
+    context_object_name = 'product'
+    ordering = ['-date_submitted']
+
+    extra_context = {
         'denied': Product.objects.filter(denied=True).count(),
         'completed': Product.objects.filter(completed=True).count(),
         }
@@ -108,6 +127,7 @@ def accept(request, orderId):
                 accepted=True,
                 denied=False
             )
+        
             ctx = {
                 'orderNum': instance.orderNumber,
                 'price': instance.price,
@@ -258,3 +278,9 @@ def complete(request, orderId):
         'form': form
     }
     return render(request, 'users/completed.html', context)
+
+def archive(request, orderId):
+    Product.objects.filter(orderId=orderId).update(archived=True)
+    redirect('list')
+    return HttpResponse("Order has been archived")
+
