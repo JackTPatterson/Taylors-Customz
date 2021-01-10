@@ -11,6 +11,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated and not instance.archived %}
+  
 
 <center>
   {% if not user.is_authenticated %}
@@ -50,7 +52,7 @@
 <center>
   <div class="py-4 w-11/12">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+      <div class="col-span-12 sm:col-span-6 md:col-span-6">
         <div class="flex flex-row bg-white shadow-md transition-all hover:shadow-xl rounded-xl p-4">
           <div class="flex flex-col flex-grow ml-4">
             <div class="text-sm text-gray-500">Full Name</div>
@@ -60,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+      <div class="col-span-12 sm:col-span-6 md:col-span-6">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4">
           <div class="flex flex-col flex-grow ml-4">
             <div class="text-sm text-gray-500">Shoe</div>
@@ -68,7 +70,12 @@
           </div>
         </div>
       </div>
-      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+    </div>
+  </div>
+  
+  <div class="py-4 w-11/12">
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-6 sm:col-span-6 md:col-span-4">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
           
           <div class="flex flex-col flex-grow ml-4">
@@ -81,12 +88,45 @@
           </div>
         </div>
       </div>
-      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+      <div class="col-span-12 sm:col-span-6 md:col-span-4">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
           
-          <div class="flex flex-col flex-grow ml-4">
-            <div class="text-sm text-gray-500">Order Number</div>
-            <div class="font-bold text-lg">{{instance.orderNumber}}</div>
+          <div class="flex flex-col flex-grow ml-3">
+            <div class="text-sm text-gray-500">Shoe Size</div>
+            <div class="font-bold text-lg">{{instance.shoe_size}} • {{instance.gender}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-4">
+        <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
+          
+          <div class="flex flex-col flex-grow ml-3">
+            <div class="text-sm text-gray-500">Progress</div>
+            {% if not instance.denied and not instance.accepted and not instance.completed %}
+                  <center><div
+                    class="px-3 py-0 w-32 text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-black">
+                    Requested
+                  </div></center>
+                  {% endif %}
+                  {% if instance.accepted %}
+                  <center><div
+                    class="px-3 py-0 w-32 text-xs leading-5 font-semibold rounded-full bg-blue-100 text-black">
+                    Accepted
+                  </div></center>
+                  {% endif %}
+                  {% if instance.denied %}
+                  <center><div
+                    class="px-3 py-0 w-32 text-xs leading-5 font-semibold rounded-full bg-red-100 text-black">
+                    Denied
+                  </div></center>
+                  {% endif %}
+                  {% if instance.completed %}
+                  <center><div
+                    class="px-3 py-0 w-32 text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
+                    Completed
+                  </div></center>
+                  {% endif %}
+            <div class="font-bold text-lg"></div>
           </div>
         </div>
       </div>
@@ -120,18 +160,18 @@
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
-          Size
+          Date Requested
         </dt>
         <dd class="text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {{instance.shoe_size}} • {{instance.gender}}
+          {{instance.date_submitted}}
         </dd>
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
-          Date Requested
+          Order Number
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {{instance.date_submitted}}
+          {{instance.orderNumber}}
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -142,6 +182,7 @@
           {{instance.description}}
         </dd>
       </div>
+      
 
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
@@ -269,10 +310,132 @@
       window.location.href = "{% url 'delete' instance.orderId %}"
     }
   }
+</script>
+{% else %}
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h3>Oops! Order Not Found</h3>
+				<h1><span>U</span><span>H</span><span>O</span><span>H</span></h1>
+			</div>
+			<h2>we are sorry, but the order you are looking for was archived or deleted</h2>
+		</div>
+	</div>
+
+	<style>
+		* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#notfound {
+    position: relative;
+    height: 100vh;
+}
+
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.notfound {
+    max-width: 520px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.notfound .notfound-404 {
+    position: relative;
+    height: 240px;
+}
+
+.notfound .notfound-404 h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 252px;
+    font-weight: 900;
+    margin: 0px;
+    color: #262626;
+    text-transform: uppercase;
+    letter-spacing: -40px;
+    margin-left: -20px;
+}
+
+.notfound .notfound-404 h1>span {
+    text-shadow: -8px 0px 0px #fff;
+}
+
+.notfound .notfound-404 h3 {
+    font-family: 'Cabin', sans-serif;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #262626;
+    margin: 0px;
+    letter-spacing: 3px;
+    padding-left: 6px;
+}
+
+.notfound h2 {
+    font-family: 'Cabin', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 767px) {
+    .notfound .notfound-404 {
+        height: 200px;
+    }
+    .notfound .notfound-404 h1 {
+        font-size: 200px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+        height: 162px;
+    }
+    .notfound .notfound-404 h1 {
+        font-size: 162px;
+        height: 150px;
+        line-height: 162px;
+    }
+    .notfound h2 {
+        font-size: 16px;
+    }
+}
+	</style>
+{% endif %}
+<script>
 
   $(document).ready(function () {
     $('#header-text').html("Order Details")
   });
+
+
 </script>
+
+
 
 {% endblock content %}
