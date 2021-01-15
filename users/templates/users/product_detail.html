@@ -11,8 +11,8 @@
 
 {% block content %}
 
-{% if user.is_authenticated and not instance.archived %}
-  
+{% if not instance.archived %}
+
 
 <center>
   {% if not user.is_authenticated %}
@@ -28,7 +28,7 @@
   <div class="text-white px-6 py-4 border-0 rounded-2xl relative mt-4 bg-blue-100 w-11/12 ">
     <span class="inline-block align-middle mr-8">
       <p class='text-black'>Your order has been accepted - If you have not payed yet, follow the link in the email or
-        click here to pay now</p>
+        <a class='text-gray-600' href='https://account.venmo.com/u/TaylorEggert22'>click here</a> to pay now</p>
     </span>
   </div>
   {% endif %}
@@ -72,12 +72,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="py-4 w-11/12">
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-6 sm:col-span-6 md:col-span-4">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
-          
+
           <div class="flex flex-col flex-grow ml-4">
             <div class="text-sm text-gray-500">Price</div>
              {% if instance.price %}
@@ -90,7 +90,7 @@
       </div>
       <div class="col-span-12 sm:col-span-6 md:col-span-4">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
-          
+
           <div class="flex flex-col flex-grow ml-3">
             <div class="text-sm text-gray-500">Shoe Size</div>
             <div class="font-bold text-lg">{{instance.shoe_size}} • {{instance.gender}}</div>
@@ -99,7 +99,7 @@
       </div>
       <div class="col-span-12 sm:col-span-6 md:col-span-4">
         <div class="flex flex-row bg-white transition-all shadow-md hover:shadow-xl rounded-xl p-4 ">
-          
+
           <div class="flex flex-col flex-grow ml-3">
             <div class="text-sm text-gray-500">Progress</div>
             {% if not instance.denied and not instance.accepted and not instance.completed %}
@@ -144,7 +144,7 @@
           {{instance.email}}
         </dd>
       </div>
-      
+
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
           Customer Owns Shoes
@@ -182,7 +182,7 @@
           {{instance.description}}
         </dd>
       </div>
-      
+
 
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">

@@ -8,11 +8,11 @@ from django.shortcuts import render, redirect
 from django.http import request, HttpResponse
 
 from .forms import (
-    ProductCreationForm, 
-    AcceptForm, 
-    DenyForm, 
-    EmailForm, 
-    CompletedForm, 
+    ProductCreationForm,
+    AcceptForm,
+    DenyForm,
+    EmailForm,
+    CompletedForm,
     )
 from .models import Product
 from django.views.generic import ListView
@@ -41,9 +41,9 @@ def request(request):
             obj = form.save(commit=False)
             obj.orderId = random_with_N_digits(10)
             obj.orderNumber = random_with_N_digits(10)
-            
+
             form.save()
-            
+
             return redirect("index")
     else:
         form = ProductCreationForm()
@@ -127,7 +127,7 @@ def accept(request, orderId):
                 accepted=True,
                 denied=False
             )
-        
+
             ctx = {
                 'orderNum': instance.orderNumber,
                 'price': instance.price,
@@ -141,11 +141,11 @@ def accept(request, orderId):
                 'jpattersonservices@gmail.com',
                 ['jpattersonservices@gmail.com'],
             )
-            msg.content_subtype = "html" 
+            msg.content_subtype = "html"
             msg.send()
 
             if settings.DEBUG:
-                return redirect('/tadmin/{}'.format(instance.orderNumber))
+                return redirect('/data/{}'.format(instance.orderNumber))
             if not settings.DEBUG:
                 return redirect('/admin/{}'.format(instance.orderNumber))
 
@@ -218,7 +218,7 @@ def email(request, orderId):
             msg.send()
 
             if settings.DEBUG:
-                return redirect('/tadmin/{}'.format(instance.orderNumber))
+                return redirect('/data/{}'.format(instance.orderNumber))
             if not settings.DEBUG:
                 return redirect('/admin/{}'.format(instance.orderNumber))
 
@@ -248,7 +248,7 @@ def complete(request, orderId):
     form = CompletedForm(request.POST)
 
     instance = Product.objects.get(orderId=orderId)
-    
+
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)

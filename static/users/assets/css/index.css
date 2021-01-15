@@ -1,3 +1,12 @@
+/* Please â¤ this if you like it! */
+
+
+/* #Primary
+================================================== */
+
+
+/* #Navigation
+================================================== */
 
 .navigation-wrap {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.001);
@@ -17,10 +26,8 @@
     transition: all 0.3s ease-out;
 }
 
-
-
 .start-header.scroll-on .navbar-brand img {
-    height: 28px;
+    
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
@@ -45,7 +52,6 @@
     display: block;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-    
 }
 
 .navbar-toggler {
@@ -145,6 +151,8 @@
 }
 
 
+/* #Primary style
+================================================== */
 
 .section {
     position: relative;
@@ -319,6 +327,8 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 
+/* #Media
+================================================== */
 
 @media (max-width: 767px) {
     h1 {
@@ -374,6 +384,10 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     }
 }
 
+
+/* #Link to page
+================================================== */
+
 .link-to-portfolio {
     position: fixed;
     bottom: 30px;
@@ -405,6 +419,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     position: absolute;
     top: 50%;
     left: 50%;
+    margin-right: 10px;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -412,15 +427,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     -o-transform: translate(-50%, -50%);
 }
 
-.img-center {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    height: 60vw;
-    backdrop-filter: blur(1px);
-}
+
 
 body {
     font-family: 'Poppins',
@@ -431,20 +438,26 @@ body {
     font-size: calc(6vw + 1pc);
     color: lightgrey;
     font-weight: bold;
+
+    
     opacity: 0;
     color: #303030;
-    mix-blend-mode: difference;
 }
 
 .img-center {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: -1;
     height: 60vw;
     backdrop-filter: blur(1px);
+    height: 50%;
     opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .sect-title {
@@ -467,6 +480,7 @@ body {
 }
 
 #req-btn {
+    opacity: 0;
     position: absolute;
     top: 80%;
     -ms-transform: translate(50%, 50%);
@@ -532,3 +546,8 @@ body {
     left: 50%;
     width: 100%;
 }
+
+  #gallery-title {
+      height: 100%;
+      margin-top: 75%;
+  }

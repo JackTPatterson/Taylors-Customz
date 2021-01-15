@@ -26,7 +26,7 @@ SECRET_KEY = 's9agcxf64@4p9l)$w#2wkng5t=-e8g2&xa)vs(%4%7$l4ph7u0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #!Need to fix static shit when debug = True
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

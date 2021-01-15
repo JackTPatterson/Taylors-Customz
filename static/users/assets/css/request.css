@@ -1,18 +1,10 @@
-.req-form {
-    width: 40%;
-    margin-top: 20px;
-    position: absolute;
-    
-    margin-top: 100px;
-}
 
 
 
-@media (max-width: 1000px) {
     .req-form {
         width: 90%;
         position: absolute;
-        top: 50%;
+        margin-top: 350px;
         left: 50%;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
@@ -20,13 +12,9 @@
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
     }
-}
 
-@media (max-height: 700px) {
-    .req-form {
-        top: 310px;
-    }
-}
+
+
 
 .form-control {
     border-radius: 10px;
@@ -53,9 +41,10 @@ label:focus,
     box-shadow: none !important;
 }
 
-.custom-select:focus {
+.form-control:focus {
     border: 2px solid black;
-    outline: none !important;
+
+
 }
 
 .custom-select {
@@ -64,20 +53,15 @@ label:focus,
     background-color: transparent;
     border: 2px solid #CCCCCC;
     height: 50px;
-    outline: none !important;
-}
-
-.custom-select{
-    border: 2px solid black;
-}
-
-#shoe-select {
-    width: 49%;
-    float: right;
 }
 
 #choice-select {
     margin-bottom: 10px;
+    float: right;
+}
+
+#shoe-select {
+    width: 49%;
     float: right;
 }
 
@@ -202,17 +186,7 @@ label:focus,
     stroke-dashoffset: 0;
 }
 
-body {
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizelegibility;
-    color: #223254;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .inline-svg {
     position: absolute;
@@ -223,11 +197,7 @@ body {
 }
 
 @media screen and (max-width: 640px) {
-    body {
-        width: auto;
-        display: inherit;
-        padding: 20px;
-    }
+
 
     .cbx {
         width: 100%;
