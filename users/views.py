@@ -139,7 +139,7 @@ def accept(request, orderId):
                 'Order Accepted',
                 message,
                 'jpattersonservices@gmail.com',
-                ['jpattersonservices@gmail.com'],
+                [instance.email],
             )
             msg.content_subtype = "html"
             msg.send()
@@ -147,7 +147,7 @@ def accept(request, orderId):
             if settings.DEBUG:
                 return redirect('/data/{}'.format(instance.orderNumber))
             if not settings.DEBUG:
-                return redirect('/admin/{}'.format(instance.orderNumber))
+                return redirect('/data/{}'.format(instance.orderNumber))
 
     context = {
         'instance': instance,
@@ -178,7 +178,7 @@ def deny(request, orderId):
                 'Order Denied',
                 message,
                 'jpattersonservices@gmail.com',
-                ['jpattersonservices@gmail.com'],
+                [instance.email],
             )
             msg.content_subtype = "html"
             msg.send()
@@ -212,7 +212,7 @@ def email(request, orderId):
                 'Order Message',
                 message,
                 'jpattersonservices@gmail.com',
-                ['jpattersonservices@gmail.com'],
+                [instance.email],
             )
             msg.content_subtype = "html"
             msg.send()
@@ -220,7 +220,7 @@ def email(request, orderId):
             if settings.DEBUG:
                 return redirect('/data/{}'.format(instance.orderNumber))
             if not settings.DEBUG:
-                return redirect('/admin/{}'.format(instance.orderNumber))
+                return redirect('/data/{}'.format(instance.orderNumber))
 
     context = {
         'instance': instance,
@@ -268,7 +268,7 @@ def complete(request, orderId):
                 'Order Completed',
                 message,
                 'jpattersonservices@gmail.com',
-                ['jpattersonservices@gmail.com'],
+                [instance.email],
             )
             msg.content_subtype = "html"
             msg.send()
