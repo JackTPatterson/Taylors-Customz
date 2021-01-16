@@ -12,6 +12,7 @@ SHOE_SIZE = [
 	('8', '8'),
 	('8.5', '8.5'),
 	('9', '9'),
+	('9.5', '9.5'),
 	('10', '10'),
 	('10.5', '10.5'),
 	('11', '11'),
@@ -19,14 +20,15 @@ SHOE_SIZE = [
 	('12', '12'),
 	('12.5', '12.5'),
 	('13', '13'),
-	('13.5', '13.5'),
-	('14', '14'),
+	
 ]
 
 GENDER = [
 	('Select Gender', 'Select Gender'),
 	('Male', 'Male'),
 	('Female', 'Female'),
+	('Child', 'Child'),
+	
 ]
 
 HASSHOES = [
@@ -55,6 +57,15 @@ class ProductCreationForm(forms.ModelForm):
 		}
 	))
 
+	address = forms.CharField(label='Last Name', widget=forms.TextInput(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'Address',
+			'id': 'req-form-address'
+		}
+	))
+
 	description = forms.CharField(label='Design Description', widget=forms.Textarea(
 		attrs={
 
@@ -70,6 +81,7 @@ class ProductCreationForm(forms.ModelForm):
 			 'type': "file",
 			 'class': "custom-file-input",
 			 'id': "inputGroupFile01",
+			 'required': 'false'
 
 		 }
 	 ))

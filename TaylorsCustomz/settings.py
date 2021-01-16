@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     "widget_tweaks",
-    "django_cleanup"
+    "django_cleanup",
+    "address"
 ]
 
 
@@ -72,8 +73,6 @@ MESSAGE_TAGS = {
     }
 
 
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -93,6 +92,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TaylorsCustomz.wsgi.application'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+GOOGLE_API_KEY = 'AIzaSyCvxnQgwVgl3sTD9R59sOWFVMIhjET_auc'
 
 
 # Database

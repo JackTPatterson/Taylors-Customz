@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone as tz
+from address.models import AddressField
 
 # Create your models here.
 class Product(models.Model):
     shoe_name = models.CharField(max_length=100, null=False, blank=True)
-    photo = models.ImageField(default='shoe.jpg', upload_to='media', blank=True)
+    photo = models.ImageField(default='shoe.jpg', upload_to='media', blank=True, null=True)
     description = models.CharField(max_length=100, null=False, blank=False)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
@@ -24,6 +25,9 @@ class Product(models.Model):
     message = models.CharField(max_length=255, blank=True)
 
     archived = models.BooleanField(default=False)
+
+    address2 = AddressField(related_name='+', blank=True, null=True)
+
 
 
 
