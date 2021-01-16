@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone as tz
-from address.models import AddressField
+
 
 # Create your models here.
 class Product(models.Model):
