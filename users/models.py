@@ -1,16 +1,17 @@
 from django.db import models
+from django.db.models.fields.related import OneToOneField
 from django.utils import timezone as tz
 
 
 # Create your models here.
 class Product(models.Model):
-    shoe_name = models.CharField(max_length=100, null=False, blank=True)
-    photo = models.ImageField(default='shoe.jpg', upload_to='media', blank=True, null=True)
-    description = models.CharField(max_length=100, null=False, blank=False)
-    first_name = models.CharField(max_length=100, null=False, blank=False)
-    last_name = models.CharField(max_length=100, null=False, blank=False)
-    shoe_size = models.CharField(max_length=100, null=True, blank=True)
-    gender = models.CharField(max_length=100, null=False, blank=True)
+    shoe_name = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='media', blank=True, null=True)
+    description = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    shoe_size = models.CharField(max_length=100)
+    gender = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     hasShoe = models.CharField(max_length=100)
 
@@ -26,10 +27,10 @@ class Product(models.Model):
 
     archived = models.BooleanField(default=False)
 
-    address2 = AddressField(related_name='+', blank=True, null=True)
-
-
-
+    address = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    state = models.CharField(max_length=255, blank=True)
+    postal = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
        return f'{self.first_name.capitalize()}' + ' ' + f'{self.last_name.capitalize()}' + ' ➜ ' + f'{self.shoe_name}'

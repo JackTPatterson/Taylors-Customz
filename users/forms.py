@@ -24,7 +24,7 @@ SHOE_SIZE = [
 ]
 
 GENDER = [
-	('Select Gender', 'Select Gender'),
+	('Select Sizing', 'Select Sizing'),
 	('Male', 'Male'),
 	('Female', 'Female'),
 	('Child', 'Child'),
@@ -57,12 +57,45 @@ class ProductCreationForm(forms.ModelForm):
 		}
 	))
 
-	address = forms.CharField(label='Last Name', widget=forms.TextInput(
+	address = forms.CharField(label='address', widget=forms.TextInput(
 		attrs={
 
-			'class': 'form-control',
+			
 			'placeholder': 'Address',
-			'id': 'req-form-address'
+			'id': 'req-form-fName',
+			'class': 'form-control',
+		}
+	))
+
+	city = forms.CharField(label='city', widget=forms.TextInput(
+		attrs={
+
+			
+			'placeholder': 'City',
+			'id': 'req-form-address',
+			'class': 'form-control',
+		}
+	))
+
+
+
+	state = forms.CharField(label='state', widget=forms.TextInput(
+		attrs={
+
+			
+			'placeholder': 'State',
+			'id': 'req-form-address',
+			'class': 'form-control',
+		}
+	))
+
+	postal = forms.CharField(label='ZIP', widget=forms.TextInput(
+		attrs={
+
+			
+			'placeholder': 'ZIP Code',
+			'id': 'req-form-address',
+			'class': 'form-control',
 		}
 	))
 
@@ -104,7 +137,7 @@ class ProductCreationForm(forms.ModelForm):
 		 attrs={
 
 			'class': 'form-control',
-			'placeholder': 'Shoe Name',
+			'placeholder': 'Type of shoe',
 			'id': 'req-form-shoe-name',
 		}
 	))

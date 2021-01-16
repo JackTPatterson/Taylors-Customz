@@ -4,51 +4,67 @@
 {% block styles %}
 <link href="../static/users/assets/css/request.css" rel='stylesheet'>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<link href='../../static/users/assets/css/tailwind.css'>
 
 
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 {% endblock styles %}
 
 {% block content %}
+
+
+
+
+
+
 <div class='req-form'>
     <form id='demo-form' method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.first_name}}
-        {{form.last_name}}
-        {{form.email}}
-        {{form.address}}
-        {{form.description}}
-        {{form.photo}}
-
-        {{form.hasShoe |attr:"class:custom-select" |attr:"id:choice-select"}}
-        {{form.shoe_name}}
-        
-            
+        <div class='bg-white shadow p-4 rounded' style='margin-top: 400px;'>
+            <h1 class='text-xl font-weight-bold'>Personal Information</h1>
+            {{form.first_name}}
+            {{form.last_name}}
+            {{form.email}}
+            {{form.description}}
+            {{form.photo}}
+            {{form.hasShoe |attr:"class:custom-select" |attr:"id:choice-select"}}
+            {{form.shoe_name}}
             {{form.shoe_size |attr:"class:custom-select" |attr:"id:shoe-select"}}
             {{form.gender |attr:"class:custom-select" |attr:"id:gender-select"}}
-       
-            <button data-sitekey="6LeUZA0aAAAAALGcXDiCGdOrCnURy1xp_dDrTYds"
-        data-callback='onSubmit' 
-        data-action='submit' type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class='bg-white shadow p-4 mt-2 rounded'>
+            <h1 class='text-xl font-weight-bold'>Shipping Address</h1>
+
+
+            {{form.address}}
+            {{form.city}}
+            {{form.state}}
+            {{form.postal}}
+
+        </div>
+
+        <button data-sitekey="6LeUZA0aAAAAALGcXDiCGdOrCnURy1xp_dDrTYds" data-callback='onSubmit' data-action='submit'
+            type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
     </form>
 </div>
 
 <script>
     function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-    $('#cbx').prop( "checked", true );
-   }   
+        document.getElementById("demo-form").submit();
+        $('#cbx').prop("checked", true);
+    }
 
-   $(document).ready(function(){
-       $('#header-text').html("Request Design")
-   });
-
+    $(document).ready(function () {
+        $('#header-text').html("Request Design")
+    });
 </script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvxnQgwVgl3sTD9R59sOWFVMIhjET_auc&callback=initMap"
-  type="text/javascript"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvxnQgwVgl3sTD9R59sOWFVMIhjET_auc&callback=initMap"
+    type="text/javascript"></script>
 
 
 {% endblock content%}
