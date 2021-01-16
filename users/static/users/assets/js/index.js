@@ -1,4 +1,3 @@
-/* Please â¤ this if you like it! */
 
 (function($) {
     "use strict";
@@ -10,9 +9,11 @@
 
             if (scroll >= 10) {
                 header.removeClass("start-style").addClass("scroll-on");
+                $('#top-navbar').addClass('bg-white');
                 
             } else {
                 header.removeClass("scroll-on").addClass("start-style");
+                 $('#top-navbar').removeClass('bg-white');
             }
         });
     });
@@ -21,6 +22,8 @@
 
     $(document).ready(function() {
         $("body.hero-anime").removeClass("hero-anime");
+
+        
     });
 
     //Menu On Hover

@@ -29,7 +29,7 @@
 
 
 <body class="leading-normal tracking-normal text-white gradient">
-<center><img style='border-radius: 20%;' class='mt-20 h-48' src='../../static/users/assets/images/image0.jpeg'></center>
+<center><img style='border-radius: 5%;' class='mt-20 h-48' src='../../static/users/assets/images/image0.jpeg'></center>
 <div class='title-box' >
     <div class='center-content'>
       <h1 class='center-txt-title'>
@@ -44,7 +44,13 @@
       </div>
     </center>
   <div class="-mt-12 lg:-mt-24" id='sect2'>
-
+<div class="owl-carousel">
+  <div> <img style='border-radius: 10px;' src='../../static/users/assets/images/shoe17.jpg'> </div>
+  <div> <img style='border-radius: 10px;' src='../../static/users/assets/images/shoe4.jpg'> </div>
+  <div> <img style='border-radius: 10px;' src='../../static/users/assets/images/shoe8.jpg'> </div>
+  <div> <img style='border-radius: 10px;' src='../../static/users/assets/images/shoe11.jpg'> </div>
+  <div> <img style='border-radius: 10px;' src='../../static/users/assets/images/shoe29.jpg'> </div>
+</div>
   </div>
   <section class="bg-white border-b py-8">
     <div class="container max-w-9xl mx-auto m-8">
@@ -124,6 +130,9 @@
 </body>
 <script src="../../static/users/assets/js/owl.carousel.js"></script>
 
+
+
+</style>
 <script>
  
 
@@ -132,22 +141,44 @@
     if(width<1290){
       $('#orderNum').attr("placeholder", "Order #");
     }
-    $('#sect2').css({"margin-top": height})
+    $('#sect2').css({"margin-top": height - 250})
+    
+
+    
+
+    
 
     var owl = $('.owl-carousel');
 owl.owlCarousel({
-    items:4,
-    loop:true,
+    responsiveClass:true,
     margin:10,
     autoplay:true,
-    autoplayTimeout:1000,
-    autoplayHoverPause:true
+    autoplayTimeout:2000,
+    autoplayHoverPause:true,
+    autoHeight: true,
+    
+    responsive:{
+        0:{
+            items:1,
+            nav:true,
+            loop:true,
+            autoWidth:true,
+            
+        },
+        600:{
+            items:3,
+            nav:false,
+            loop:true,
+            autoWidth:true,
+        },
+        1000:{
+            items:4,
+            nav:true,
+            loop: true,
+
+        }
+    }
+    
 });
-$('.play').on('click',function(){
-    owl.trigger('play.owl.autoplay',[1000])
-})
-$('.stop').on('click',function(){
-    owl.trigger('stop.owl.autoplay')
-})
 </script>
 {% endblock content %}
