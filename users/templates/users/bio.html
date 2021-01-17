@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+
+{% block styles %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+{% endblock styles %}
+
+{% block content %}
+  
+<p class='m-3'>{{data.description}}</p>
+
+<script>
+
+  $(document).ready(function () {
+    $('#header-text').html("About Me")
+  });
+
+
+</script>
+{% endblock content %}

@@ -35,3 +35,15 @@ class Product(models.Model):
     def __str__(self):
        return f'{self.first_name.capitalize()}' + ' ' + f'{self.last_name.capitalize()}' + ' ➜ ' + f'{self.shoe_name}'
     
+class AboutMe(models.Model):
+    description = models.CharField(max_length=10000)
+    active = models.BooleanField(default=True)
+
+class Reviews(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    message = models.CharField(max_length=500)
+    rating = models.IntegerField(verbose_name="Rating")
+
+    active = models.BooleanField(default=False)
+    

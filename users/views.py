@@ -13,8 +13,11 @@ from .forms import (
     DenyForm,
     EmailForm,
     CompletedForm,
+    AboutMeForm,
+    ReviewForm,
+    ReviewEditForm
     )
-from .models import Product
+from .models import Product, AboutMe, Reviews
 from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -244,11 +247,10 @@ def delete(request, orderId):
     redirect('list')
     return HttpResponse("Data has been deleted")
 
+
 def complete(request, orderId):
     form = CompletedForm(request.POST)
-
     instance = Product.objects.get(orderId=orderId)
-
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
@@ -284,3 +286,52 @@ def archive(request, orderId):
     redirect('list')
     return HttpResponse("Order has been archived")
 
+
+def bio(request):
+    data = AboutMe.objects.get(active=True)
+    context = { 'data': data }
+    return render(request, 'users/bio.html', context)
+
+def admin(request):
+    aboutMe = AboutMe.objects.get(active=True).description
+
+    reviews = Reviews.objects.all()
+
+    form = AboutMeForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            obj = form.save(commit=False)
+            description = obj.description
+            AboutMe.objects.filter(active=True).update(
+                description=description
+            )
+            return redirect('admin')
+
+    context = {
+        'form': form,
+        'data': aboutMe,
+        'reviews':  reviews
+    }
+    return render(request, 'users/admin.html', context)
+
+
+@login_required
+def rating(request, id):
+    form = ReviewEditForm(request.POST)
+    data = Reviews.objects.get(id=id)
+
+    if request.method == "POST":
+        if form.is_valid():
+            obj = form.save(commit=False)
+            active = obj.active
+            Reviews.objects.filter(id=id).update(
+                active=active
+            )
+            return redirect('admin')
+
+    context = {
+        'form': form,
+        'data': data
+    }
+
+    return render(request, 'users/reviews.html', context)

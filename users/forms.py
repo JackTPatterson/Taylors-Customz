@@ -1,4 +1,5 @@
-from .models import Product
+from django.forms.fields import BooleanField
+from .models import Product, AboutMe, Reviews
 from django import forms
 
 SHOE_SIZE = [
@@ -62,7 +63,6 @@ class ProductCreationForm(forms.ModelForm):
 
 			
 			'placeholder': 'Address',
-			'id': 'req-form-fName',
 			'class': 'form-control',
 		}
 	))
@@ -108,7 +108,7 @@ class ProductCreationForm(forms.ModelForm):
 		}
 	))
 
-	photo = forms.ImageField(widget=forms.FileInput(
+	photo = forms.ImageField(required=False, widget=forms.FileInput(
 		 attrs={
 
 			 'type': "file",
@@ -199,7 +199,7 @@ class EmailForm(forms.ModelForm):
 
 
 class CompletedForm(forms.ModelForm):
-    
+	
 	message = forms.CharField(widget=forms.Textarea(
 		attrs={
 
@@ -213,3 +213,73 @@ class CompletedForm(forms.ModelForm):
 		model = Product
 		fields = ('message',)
 
+
+
+class AboutMeForm(forms.ModelForm):
+	description = forms.CharField(widget=forms.Textarea(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'About Me Message',
+			'id': 'about-msg'
+		}
+	))
+
+	class Meta:
+		model = AboutMe
+		exclude = ('active',)
+
+class ReviewForm(forms.ModelForm):
+	description = forms.CharField(widget=forms.Textarea(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'About Me Message',
+			'id': 'about-msg'
+		}
+	))
+
+	rating = forms.IntegerField(widget=forms.TextInput(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'About Me Message',
+			'id': 'about-msg'
+		}
+	))
+
+	first_name = forms.CharField(label='First Name', widget=forms.TextInput(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'First Name',
+			'id': 'req-form-fName'
+		}
+	))
+
+	last_name = forms.CharField(label='Last Name', widget=forms.TextInput(
+		attrs={
+
+			'class': 'form-control',
+			'placeholder': 'Last Name',
+			'id': 'req-form-lName'
+		}
+	))
+
+	class Meta:
+		model = Reviews
+		exclude = ('rating',)
+
+class ReviewEditForm(forms.ModelForm):
+	active = forms.BooleanField(widget=forms.CheckboxInput(
+        attrs={
+            'class': 'inp-cbx',
+            'style': 'display: none;',
+            'id': 'cbx'
+
+        }
+    ))
+
+	class Meta:
+		model = Reviews
+		fields = ('active',)
