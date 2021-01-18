@@ -24,10 +24,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from random import randint
 from TaylorsCustomz import settings
-# Create your views here.
+from django.core import serializers  # Create your views here.
 
 def index(request):
-    return render(request, 'users/index.html')
+    data = Reviews.objects.all()
+
+
+    json = serializers.serialize("json", data)
+    context = {
+        'data': data,
+        'json': json
+    }
+    return render(request, 'users/index.html', context)
 
 
 def random_with_N_digits(n):
@@ -317,8 +325,8 @@ def admin(request):
 
 @login_required
 def rating(request, id):
-    form = ReviewEditForm(request.POST)
     data = Reviews.objects.get(id=id)
+    form = ReviewEditForm(request.POST)
 
     if request.method == "POST":
         if form.is_valid():

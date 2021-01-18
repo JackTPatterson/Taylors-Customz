@@ -273,10 +273,7 @@ class ReviewForm(forms.ModelForm):
 class ReviewEditForm(forms.ModelForm):
 	active = forms.BooleanField(widget=forms.CheckboxInput(
         attrs={
-            'class': 'inp-cbx',
-            'style': 'display: none;',
-            'id': 'cbx'
-
+			'id': 'checkmk'
         }
     ))
 
