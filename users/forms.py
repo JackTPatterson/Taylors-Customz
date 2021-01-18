@@ -38,6 +38,15 @@ HASSHOES = [
 	('I need these shoes', 'I need these shoes'),
 ]
 
+RATING = [
+	('Select Rating', 'Select Rating'),
+	('1', '1'),
+	('2', '2'),
+	('3', '3'),
+	('4', '4'),
+	('5', '5'),
+]
+
 class ProductCreationForm(forms.ModelForm):
 
 	first_name = forms.CharField(label='First Name', widget=forms.TextInput(
@@ -230,23 +239,16 @@ class AboutMeForm(forms.ModelForm):
 		exclude = ('active',)
 
 class ReviewForm(forms.ModelForm):
-	description = forms.CharField(widget=forms.Textarea(
+	message = forms.CharField(widget=forms.Textarea(
 		attrs={
 
 			'class': 'form-control',
-			'placeholder': 'About Me Message',
+			'placeholder': 'Write A Message',
 			'id': 'about-msg'
 		}
 	))
 
-	rating = forms.IntegerField(widget=forms.TextInput(
-		attrs={
-
-			'class': 'form-control',
-			'placeholder': 'About Me Message',
-			'id': 'about-msg'
-		}
-	))
+	rating = forms.CharField(widget=forms.Select(choices=RATING))
 
 	first_name = forms.CharField(label='First Name', widget=forms.TextInput(
 		attrs={
@@ -268,7 +270,7 @@ class ReviewForm(forms.ModelForm):
 
 	class Meta:
 		model = Reviews
-		exclude = ('rating',)
+		exclude = ('active',)
 
 class ReviewEditForm(forms.ModelForm):
 	active = forms.BooleanField(widget=forms.CheckboxInput(

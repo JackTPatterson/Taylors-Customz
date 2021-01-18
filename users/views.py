@@ -343,3 +343,19 @@ def rating(request, id):
     }
 
     return render(request, 'users/reviews.html', context)
+
+def writeReview(request):
+    form = ReviewForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thank you for submitting your review')
+            
+
+         
+            return redirect('rating')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/review-form.html', context)

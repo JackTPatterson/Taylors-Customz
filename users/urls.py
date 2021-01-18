@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     path('gallery/', views.gallery, name='gallery'),
     path('about/', views.bio, name='bio'),
+    path('rating/', views.writeReview, name='rating'),
     path('data/', views.AdminListView.as_view(), name='list'),
     path('data/archived/', views.ArchivedOrders.as_view(), name='archivedList'),
     path('data/dashboard', views.admin, name='admin-dash'),
@@ -23,8 +24,6 @@ urlpatterns = [
     path('order/<int:orderId>/archive/', views.archive, name='archive'),
     path('data/dashboard/', views.admin, name='admin'),
     path('data/ratings/<int:id>', views.rating, name='rating-review')
-
-
 ]
 
 if settings.DEBUG:

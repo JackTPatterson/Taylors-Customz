@@ -1,4 +1,7 @@
  $(document).ready(function () {
+
+
+
     $('.center-txt-title').animate({
       opacity: 1,
        'padding-bottom' : 20
@@ -10,6 +13,13 @@
     $('.logo-cntr').animate({
         transform: scale(1.01),
       opacity: 1,
+       
+    }, "slow");
+
+    $('#ind-sub').animate({
+       
+     opacity: 1,
+       'padding-bottom' : 20
        
     }, "slow");
     
