@@ -374,6 +374,8 @@ def pictureUpload(request):
             obj = form.save(commit=False)
 
             obj.priority = picAmt + 1
+
+            obj.save()
             return redirect('admin')
 
     context = {

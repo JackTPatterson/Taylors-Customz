@@ -5,8 +5,12 @@
 {% endblock styles %}
 
 {% block content %}
-  
-<p class='m-3'>{{data.description}}</p>
+
+ <div>
+   <img class='rounded-lg m-3' id='bio-pic' src='../../static/users/assets/images/bio_img.png' style='height:300px;'>
+ </div> 
+
+<p id='bio-text' class='mt-3'>{{data.description}}</p>
 
 <script>
 

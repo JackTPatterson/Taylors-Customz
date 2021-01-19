@@ -27,7 +27,7 @@
 }
 
 .start-header.scroll-on .navbar-brand img {
-    
+
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
@@ -246,7 +246,7 @@ body.hero-anime #switch {
 }
 
 .dropdown-menu {
-    padding: 10px!important;
+    padding: 10px !important;
     margin: 0;
     font-size: 13px;
     letter-spacing: 1px;
@@ -334,9 +334,11 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     h1 {
         font-size: 38px;
     }
+
     .nav-item:after {
         display: none;
     }
+
     .nav-item::before {
         position: absolute;
         display: block;
@@ -348,6 +350,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
         border: none;
         background-color: #000;
     }
+
     .dropdown-toggle::after {
         position: absolute;
         display: block;
@@ -360,25 +363,31 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
         background-color: #000;
         transition: all 200ms linear;
     }
+
     .dropdown-toggle[aria-expanded="true"]::after {
         transform: rotate(90deg);
         opacity: 0;
     }
+
     .dropdown-menu {
         padding: 0 !important;
         background-color: transparent;
         transition: all 200ms linear;
     }
+
     .dropdown-toggle[aria-expanded="true"]+.dropdown-menu {
         margin-top: 10px !important;
         margin-bottom: 20px !important;
     }
+
     body.dark .nav-item::before {
         background-color: #fff;
     }
+
     body.dark .dropdown-toggle::after {
         background-color: #fff;
     }
+
     body.dark .dropdown-menu {
         background-color: transparent;
     }
@@ -431,15 +440,15 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 body {
     font-family: 'Poppins',
-    sans-serif;
-    }
+        sans-serif;
+}
 
 .center-txt-title {
     font-size: calc(6vw + 1pc);
     color: lightgrey;
     font-weight: bold;
 
-    
+
     opacity: 0;
     color: #303030;
 }
@@ -535,7 +544,7 @@ body {
 
 .bg-img {
 
-    
+
     position: absolute;
 
     -ms-transform: translate(50%, 50%);
@@ -547,7 +556,29 @@ body {
     width: 100%;
 }
 
-  #gallery-title {
-      height: 100%;
-      margin-top: 75%;
-  }
+#gallery-title {
+    height: 100%;
+    margin-top: 75%;
+}
+
+
+@media screen and (min-width: 1000px) {
+    #bio-pic {
+        float: left;
+
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    #bio-pic {
+        margin: 10px;
+        position: absolute;
+        left: calc(50% - calc(161.3px / 2));
+    }
+
+    #bio-text {
+        margin: 20px;
+        padding-top: 320px;
+    }
+}
