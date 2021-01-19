@@ -19,8 +19,6 @@
 
     $(document).ready(function () {
         $("body.hero-anime").removeClass("hero-anime");
-
-       
     });
 
     //Menu On Hover
