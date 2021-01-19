@@ -148,7 +148,7 @@ def accept(request, orderId):
             msg = EmailMessage(
                 'Order Accepted',
                 message,
-                'jpattersonservices@gmail.com',
+                'taylorscustomz22@gmail.comm',
                 [instance.email],
             )
             msg.content_subtype = "html"
@@ -187,7 +187,7 @@ def deny(request, orderId):
             msg = EmailMessage(
                 'Order Denied',
                 message,
-                'jpattersonservices@gmail.com',
+                'taylorscustomz22@gmail.comm',
                 [instance.email],
             )
             msg.content_subtype = "html"
@@ -221,7 +221,7 @@ def email(request, orderId):
             msg = EmailMessage(
                 'Order Message',
                 message,
-                'jpattersonservices@gmail.com',
+                'taylorscustomz22@gmail.comm',
                 [instance.email],
             )
             msg.content_subtype = "html"
@@ -278,7 +278,7 @@ def complete(request, orderId):
             msg = EmailMessage(
                 'Order Completed',
                 message,
-                'jpattersonservices@gmail.com',
+                'taylorscustomz22@gmail.com',
                 [instance.email],
             )
             msg.content_subtype = "html"

@@ -153,6 +153,7 @@ MEDIA_URL = "/media/"
 TEMPLATED_EMAIL_BACKEND = "templated_email.backends.vanilla_django.TemplateBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = 'jpattersonservices@gmail.com'
-EMAIL_HOST_PASSWORD = 'chpthrzckzuffryy'
+EMAIL_HOST_USER = 'taylorscustomz22@gmail.com'
+EMAIL_HOST_PASSWORD = 'ctcwqgfehcawvayty'
 EMAIL_PORT = 587
+
