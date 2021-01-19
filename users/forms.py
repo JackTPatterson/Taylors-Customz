@@ -1,5 +1,4 @@
-from django.forms.fields import BooleanField
-from .models import Product, AboutMe, Reviews
+from .models import Product, AboutMe, Reviews, Pictures
 from django import forms
 
 SHOE_SIZE = [
@@ -282,3 +281,22 @@ class ReviewEditForm(forms.ModelForm):
 	class Meta:
 		model = Reviews
 		fields = ('active',)
+
+class PictureForm(forms.ModelForm):
+	photo = forms.ImageField(required=False, widget=forms.FileInput(
+		 attrs={
+
+			 'type': "file",
+			 'class': "custom-file-input",
+			 'id': "inputGroupFile01",
+			 'required': 'false',
+			 
+
+		 }
+	 ))
+
+	class Meta:
+		 model = Pictures
+		 fields = '__all__'
+		 ordering = ('id',)
+

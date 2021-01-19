@@ -1,0 +1,32 @@
+{% extends "users/base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href='../../static/users/assets/css/gallery.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+<script src="../../static/users/assets/js/transition.min.js"></script>
+<script src="../../static/users/assets/js/zoom.min.js"></script>
+<link href="../../static/users/assets/css/zoom.css" rel="stylesheet">
+{% endblock styles %}
+
+{% block content %}
+<div class="responsive">
+  <div class="grid" style='margin-top: 10px;'>
+    {% for p in pictures %}
+    <div class="grid--item">
+      <img class='grid-img' src="../../../media/{{p.picture}}" id='img{{p.id}}' data-action="zoom" />
+    </div>
+    {% endfor %}
+    
+  </div>
+<script>
+  $(document).ready(function(){
+       $('#header-text').html("Gallery")
+   });
+  </script>
+
+  <script src="../../static/users/assets/js/gridify.min.js"></script>
+  <script src="../../static/users/assets/js/galleryAnimation.js"></script>
+
+
+  {% endblock content %}

@@ -9,7 +9,7 @@ urlpatterns = [
     path('request/', views.request, name='request'),
     path('login/', views.loginUser, name='login'),
     path('logout/', views.logoutUser, name='logout'),
-    path('gallery/', views.gallery, name='gallery'),
+    path('gallery/', views.GalleryListView.as_view(), name='gallery'),
     path('about/', views.bio, name='bio'),
     path('rating/', views.writeReview, name='rating'),
     path('data/', views.AdminListView.as_view(), name='list'),
@@ -23,7 +23,10 @@ urlpatterns = [
     path('order/<int:orderId>/delete/',views.delete, name='delete'),
     path('order/<int:orderId>/archive/', views.archive, name='archive'),
     path('data/dashboard/', views.admin, name='admin'),
-    path('data/ratings/<int:id>', views.rating, name='rating-review')
+    path('data/ratings/<int:id>', views.rating, name='rating-review'),
+    path('data/dashboard/upload', views.pictureUpload, name='picture-upload'),
+    path('data/dashboard/remove/<int:id>', views.pictureRemove, name='picture-remove')
+
 ]
 
 if settings.DEBUG:

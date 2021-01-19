@@ -15,25 +15,21 @@ from .forms import (
     CompletedForm,
     AboutMeForm,
     ReviewForm,
-    ReviewEditForm
+    ReviewEditForm,
+    PictureForm
     )
-from .models import Product, AboutMe, Reviews
+from .models import Product, AboutMe, Reviews, Pictures
 from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from random import randint
 from TaylorsCustomz import settings
-from django.core import serializers  # Create your views here.
 
 def index(request):
     data = Reviews.objects.all()
-
-
-    json = serializers.serialize("json", data)
     context = {
         'data': data,
-        'json': json
     }
     return render(request, 'users/index.html', context)
 
@@ -114,16 +110,15 @@ def loginUser(request):
         context = {}
         return render(request, 'users/login.html', context)
 
-
+@login_required
 def logoutUser(request):
     logout(request)
     return redirect('login')
 
 def handler404(request, exception):
-
     return render(request, 'users/404.html')
 
-
+@login_required
 def accept(request, orderId):
     instance = Product.objects.get(orderId=orderId)
     form = AcceptForm(request.POST)
@@ -167,7 +162,7 @@ def accept(request, orderId):
 
     return render(request, 'users/accept.html', context)
 
-
+@login_required
 def deny(request, orderId):
     instance = Product.objects.get(orderId=orderId)
     form = DenyForm(request.POST)
@@ -202,7 +197,7 @@ def deny(request, orderId):
 
     return render(request, 'users/deny.html', context)
 
-
+@login_required
 def email(request, orderId):
     instance = Product.objects.get(orderId=orderId)
     form = EmailForm(request.POST)
@@ -240,22 +235,24 @@ def email(request, orderId):
 
     return render(request, 'users/email.html', context)
 
+class GalleryListView(ListView):
+    redirect_field_name = 'redirect_to'
+    model = Pictures
+    template_name = 'users/gallery_list.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'pictures'
+    ordering = ['priority']
 
-def admin(request):
-    return render(request, 'users/admin.html')
 
+    
 
-
-def gallery(request):
-    return render(request, 'users/gallery.html')
-
+@login_required
 def delete(request, orderId):
     instance = Product.objects.get(orderId=orderId)
     instance.delete()
     redirect('list')
     return HttpResponse("Data has been deleted")
 
-
+@login_required
 def complete(request, orderId):
     form = CompletedForm(request.POST)
     instance = Product.objects.get(orderId=orderId)
@@ -289,6 +286,7 @@ def complete(request, orderId):
     }
     return render(request, 'users/completed.html', context)
 
+@login_required
 def archive(request, orderId):
     Product.objects.filter(orderId=orderId).update(archived=True)
     redirect('list')
@@ -300,8 +298,11 @@ def bio(request):
     context = { 'data': data }
     return render(request, 'users/bio.html', context)
 
+@login_required
 def admin(request):
     aboutMe = AboutMe.objects.get(active=True).description
+
+    pictures = Pictures.objects.all()
 
     reviews = Reviews.objects.all()
 
@@ -318,7 +319,8 @@ def admin(request):
     context = {
         'form': form,
         'data': aboutMe,
-        'reviews':  reviews
+        'reviews':  reviews,
+        'pictures': pictures
     }
     return render(request, 'users/admin.html', context)
 
@@ -350,12 +352,29 @@ def writeReview(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Thank you for submitting your review')
-            
-
-         
             return redirect('rating')
 
     context = {
         'form': form
     }
     return render(request, 'users/review-form.html', context)
+
+@login_required
+def pictureUpload(request):
+    form = PictureForm(request.POST, request.FILES)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect('admin')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/picture-upload.html', context)
+
+@login_required
+def pictureRemove(request, id):
+    instance = Pictures.objects.get(id=id)
+    instance.delete()
+    return redirect('admin')
+    

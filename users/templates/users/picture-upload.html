@@ -1,0 +1,38 @@
+{% extends "users/base.html" %}
+
+{% block styles %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+{% endblock styles %}
+
+{% block content %}
+<center>
+    <div class='bg-white shadow w-11/12 m-5 px-3 pt-3'>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img id="myImg" src="#" class='rounded-lg h-14 m-3' />
+
+            {{form.picture}}
+            <button type="submit" id='req-sbmt' class="btn btn-primary mb-4">Submit</button>
+        </form>
+    </div>
+</center>
+<script>
+    $(document).ready(function () {
+        $('#header-text').html("Upload Picture")
+
+    });
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+
+    function imageIsLoaded(e) {
+        $('#myImg').attr('src', e.target.result);
+    };
+</script>
+{% endblock content %}
