@@ -16,7 +16,8 @@ from .forms import (
     AboutMeForm,
     ReviewForm,
     ReviewEditForm,
-    PictureForm
+    PictureForm,
+    PictureEditForm
     )
 from .models import Product, AboutMe, Reviews, Pictures
 from django.views.generic import ListView
@@ -46,6 +47,9 @@ def request(request):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
+
+            orderNumbers = Product.objects.all()
+            
             obj.orderId = random_with_N_digits(10)
             obj.orderNumber = random_with_N_digits(10)
 
@@ -362,9 +366,14 @@ def writeReview(request):
 @login_required
 def pictureUpload(request):
     form = PictureForm(request.POST, request.FILES)
+
+    picAmt = Pictures.objects.all().count()
+
     if request.method == "POST":
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+
+            obj.priority = picAmt + 1
             return redirect('admin')
 
     context = {
@@ -377,4 +386,30 @@ def pictureRemove(request, id):
     instance = Pictures.objects.get(id=id)
     instance.delete()
     return redirect('admin')
+    
+def editPicture(request, id):
+    instance = Pictures.objects.filter(id=id)
+    form = PictureEditForm(request.POST, instance)
+    
+
+    if request.method == "POST":
+        if form.is_valid():
+            
+            obj = form.save(commit=False)
+
+            instance.update(
+                priority=obj.priority
+            )
+            return redirect('admin')
+
+    context = {
+        'form': form,
+        'data': instance
+    }
+
+    return render(request, 'users/edit-picture.html', context)
+
+
+
+
     

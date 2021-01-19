@@ -273,10 +273,10 @@ class ReviewForm(forms.ModelForm):
 
 class ReviewEditForm(forms.ModelForm):
 	active = forms.BooleanField(widget=forms.CheckboxInput(
-        attrs={
+		attrs={
 			'id': 'checkmk'
-        }
-    ))
+		}
+	))
 
 	class Meta:
 		model = Reviews
@@ -290,13 +290,22 @@ class PictureForm(forms.ModelForm):
 			 'class': "custom-file-input",
 			 'id': "inputGroupFile01",
 			 'required': 'false',
-			 
-
 		 }
 	 ))
-
 	class Meta:
-		 model = Pictures
-		 fields = '__all__'
-		 ordering = ('id',)
+		model = Pictures
+		exclude = ('priority',)
+
+class PictureEditForm(forms.ModelForm):
+		
+	priority = forms.CharField(label='Priority', widget=forms.TextInput(
+		attrs={
+			'class': 'form-control',
+			'id': 'req-form-pr'
+		}
+	))
+	class Meta:
+		model = Pictures
+		exclude = ('picture',)
+
 

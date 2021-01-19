@@ -54,5 +54,9 @@ class Pictures(models.Model):
     priority = models.IntegerField(verbose_name="Rating")
     picture = models.ImageField(upload_to='media/gallery', blank=True, null=True)
 
+    class Meta:
+        ordering = ['priority']
+
     def __str__(self):
        return str(f'{self.picture}').split('/')[2]
+       

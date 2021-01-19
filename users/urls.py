@@ -25,7 +25,8 @@ urlpatterns = [
     path('data/dashboard/', views.admin, name='admin'),
     path('data/ratings/<int:id>', views.rating, name='rating-review'),
     path('data/dashboard/upload', views.pictureUpload, name='picture-upload'),
-    path('data/dashboard/remove/<int:id>', views.pictureRemove, name='picture-remove')
+    path('data/dashboard/remove/<int:id>', views.pictureRemove, name='picture-remove'),
+    path('dashboard/edit/<int:id>', views.editPicture, name='picture-edit')
 
 ]
 

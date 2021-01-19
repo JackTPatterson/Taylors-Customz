@@ -14,7 +14,6 @@
             {{form.description}}
             <button data-action='submit' type="submit" id='req-sbmt' class="btn btn-primary">Submit</button>
         </form>
-
     </div>
     <h1 class='text-xl font-weight-bold mt-4 mb-3'>Ratings</h1>
     <div class='bg-white shadow '>
@@ -29,8 +28,6 @@
                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Rating
                     </th>
-
-
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -96,6 +93,9 @@
                     <td></td>
                     <td></td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button onclick='window.location.href=href="{% url 'picture-edit' p.id %}"'
+                            class="transition-all h-10 items-center px-3 font-bold hover:text-white text-black hover:bg-black rounded-lg hover:shadow-lg hover:m-4 focus:bg-gray-700">Edit
+                            Picture</button>
                         <button onclick='window.location.href=href="{% url 'picture-remove' p.id %}"'
                             class="transition-all h-10 items-center px-3 font-bold text-red-500  hover:bg-black rounded-lg hover:shadow-lg hover:m-4 focus:bg-gray-700">Remove
                             Picture</button>
