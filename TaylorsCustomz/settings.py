@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 from django.contrib.messages import constants as messages
 import os
-from decouple import config
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,7 +24,7 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'fj=+%ji@bam-e2s81%a_mm+b#9=yux#i4jr3$jsx(rw5)izl!y'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "widget_tweaks",
     "django_cleanup",
-    
+
 ]
 
 
@@ -156,7 +156,7 @@ MEDIA_URL = "/media/"
 TEMPLATED_EMAIL_BACKEND = "templated_email.backends.vanilla_django.TemplateBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'taylorscustomz22@gmail.com'
+EMAIL_HOST_PASSWORD = 'Softballtay22'
 EMAIL_PORT = 587
 
