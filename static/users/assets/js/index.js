@@ -50,4 +50,4 @@
             $("#switch").addClass("switched");
         }
     });
-})(jQuery);
+});

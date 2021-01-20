@@ -372,9 +372,7 @@ def pictureUpload(request):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save(commit=False)
-
             obj.priority = picAmt + 1
-
             obj.save()
             return redirect('admin')
 

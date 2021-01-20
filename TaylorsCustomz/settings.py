@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 from django.contrib.messages import constants as messages
 import os
-from decouple import config
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,11 +22,10 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
+SECRET_KEY = 's9agcxf64@4p9l)$w#2wkng5t=-e8g2&xa)vs(%4%7$l4ph7u0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
+#!Need to fix static shit when debug = True
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -156,7 +153,7 @@ MEDIA_URL = "/media/"
 TEMPLATED_EMAIL_BACKEND = "templated_email.backends.vanilla_django.TemplateBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'taylorscustomz22@gmail.com'
+EMAIL_HOST_PASSWORD = 'ctcwqgfehcawvayty'
 EMAIL_PORT = 587
 

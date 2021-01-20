@@ -8,7 +8,6 @@
        
     }, "slow");
     $('.logo-cntr').animate({
-        transform: scale(1.01),
       opacity: 1,
        
     }, "slow");
