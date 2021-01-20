@@ -278,7 +278,7 @@ def complete(request, orderId):
             msg = EmailMessage(
                 'Order Completed',
                 message,
-                'Taylors Customz <taylorscustomz22@gmail.com>',
+                'taylorscustomz22@gmail.com',
                 [instance.email],
             )
             msg.content_subtype = "html"
